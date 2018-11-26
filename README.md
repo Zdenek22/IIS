@@ -1,2 +1,2 @@
 # IIS
-projekt do IIS
+Informační systém Lékarny do předmětu IIS.
