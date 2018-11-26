@@ -52,6 +52,7 @@ div.error{
 }
 
 .errorButton{
+    font-size: large;
     background-color: red;
     color: white;
     padding: 14px 20px;
@@ -61,7 +62,4 @@ div.error{
     width: 30%;
 }
 
-.errorForm{
-    border: 3px solid #f1f1f1;
-}
 
