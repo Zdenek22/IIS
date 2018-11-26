@@ -9,7 +9,7 @@ h1, h2{
 }
 
 input[type=text], input[type=password] {
-    width: 50%;
+    width: 30%;
     padding: 14px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -24,7 +24,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 50%;
+    width: 30%;
 }
 
 button:hover {
