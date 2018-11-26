@@ -45,3 +45,23 @@ img.logo {
     padding: 16px;
 }
 
+div.error{
+    text-align: center;
+    font-size: x-large;
+    margin: 50px;
+}
+
+.errorButton{
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+}
+
+.errorForm{
+    border: 3px solid #f1f1f1;
+}
+
