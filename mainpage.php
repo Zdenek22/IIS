@@ -39,16 +39,19 @@ function makeMainPage(){
 // Sklad - id = store
 function mainPageButtons(){
 	?>	
-		<div class="firstCol">
-			<div class="menu">
-				<!-- TODO akce  -->
-				<form method="get">
-					<button id="mainPage" class="menuButtons" type="submit">Hlavní stránka</button>
-					<button id="reservations" class="menuButtons" type="submit">Seznam rezervací</button>
-					<button id="store" class="menuButtons" type="submit">Sklad</button>
-				</form>
-			</div>
+	<div class="firstCol">
+		<div class="menu">
+			<form action="main.php" method="get">
+				<button id="mainPage" class="menuButtons" type="submit">Hlavní stránka</button>
+			</form>
+			<form action="reservations.php" method="get">
+				<button id="reservations" class="menuButtons" type="submit">Seznam rezervací</button>
+			</form>
+			<form action="store.php" method="get">	
+				<button id="store" class="menuButtons" type="submit">Sklad</button>
+			</form>
 		</div>
+	</div>
 	<?php	
 }
 
@@ -102,9 +105,9 @@ function mainFindBar(){
 	// TODO akce pri hledani leku
 	?>
 	<div class="thirdCol">
-		<form>
+		<form action="findMedicine.php" method="get">
 			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
-			<input class="findButton" type="button" name="find" value="Hledej">
+			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
 
 	<?php
@@ -123,9 +126,11 @@ function userInfo($id){
 		Status: správce/zaměstnanec<br>
 	</div>
 	<br>
-	<form>
-		<input class="userButton" type="button" name="account" value="Správa účtu">
-		<input class="userButton" type="button" name="logof" value="Odhlásit se">
+	<form action="accountInfo.php" method="get">
+		<button id="accountInfo" class="userButton" type="submit">Správa účtu</button>
+	</form>	
+	<form action="logout.php" method="get">
+		<button id="logout" class="userButton" type="submit">Odhlásit se</button>
 	</form>
 	<?php	
 }
