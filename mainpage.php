@@ -5,17 +5,18 @@
 // usage:	makeMainPage()
 //			mainPageButtons()
 //			startTable()
-//			fillTable($medicine)
+//			fillTable($medicine)  -> cyklem projet pro kazdy lek
 //			endTable()
 //			mainFindBar()
 //			userInfo($id)
 //			endMainPage()
 
 
-require "DBoperations.php"
+require_once "DBOperations.php";
 
 //	hlavicka + nadpis
 function makeMainPage(){
+	header("Content-Type: text/html; charset=UTF-8");
 	?>
 	<!DOCTYPE html>
 	<html lang="cz">
@@ -109,12 +110,15 @@ function mainFindBar(){
 }
 
 // prida na stranku informace o uzivateli
-function userInfo($id, $database){
-	// TODO $user
-	$user = getPerson($id);
+function userInfo($id){
+	$person[0] = 'xrita';
+	$person[1] = 'me';
+	$server = new Database_access();
+	$user = $server->getPerson($person);
 	?>	
 	<div class="info">
-		Uživatel: Pepek Námořník<br>
+		Uživatel: Pepek Namornik<br>
+		login: <?echo $user['login'];?><br>
 		Status: správce/zaměstnanec<br>
 	</div>
 	<?php	
