@@ -122,6 +122,11 @@ function userInfo($id){
 		login: <?echo $user['login'];?><br>
 		Status: správce/zaměstnanec<br>
 	</div>
+	<br>
+	<form>
+		<input class="userButton" type="button" name="account" value="Správa účtu">
+		<input class="userButton" type="button" name="logof" value="Odhlásit se">
+	</form>
 	<?php	
 }
 
