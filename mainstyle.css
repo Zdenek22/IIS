@@ -1,0 +1,65 @@
+/* Main Page style */
+
+/* Nadpis prvni urovne */
+h1{
+	text-align: center;
+}
+
+
+.firstCol{
+	width: 10%;
+	float: left;
+}
+
+.thirdCol{
+	width: 15%;
+	float: left;/*
+	margin-right: 50px;*/
+}
+
+.secondCol{
+	width: 60%;
+	height: 100%;
+	float: left;
+	margin-left: 5%;
+}
+
+/* Menu buttons */
+.menuButtons{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin-left: 20px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+}
+
+.menuButtons:hover{
+    opacity: 0.8;
+}
+
+.thirdCol .findItem{
+	width: 80%;
+	float: right;
+}
+
+.secondCol .medTable{
+	width: 100%;
+}
+
+.secondCol .medTable tr .mytd{
+	border: 1px solid black;
+	width: 31.5%;
+	height: 4cm;
+	float: left;
+}
+
+.thirdCol .info{
+	float:right;
+	margin: 20px;	
+}
