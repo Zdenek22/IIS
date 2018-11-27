@@ -104,6 +104,7 @@ function mainFindBar(){
 	<div class="thirdCol">
 		<form>
 			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
+			<input class="findButton" type="button" name="find" value="Hledej">
 		</form>
 
 	<?php

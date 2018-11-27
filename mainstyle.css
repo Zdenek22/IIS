@@ -48,12 +48,18 @@ h1{
 	float: right;
 }
 
+.thirdCol .findButton{
+	float: right;
+    background-color: #4CAF50;
+    color: white;
+}
+
 .secondCol .medTable{
-	width: 100%;
+	width: 100%; 
 }
 
 .secondCol .medTable tr .mytd{
-	border: 1px solid black;
+	border: 1px solid #ccc;
 	width: 31.5%;
 	height: 6cm;
 	float: left;
