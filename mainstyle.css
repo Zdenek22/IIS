@@ -55,11 +55,44 @@ h1{
 .secondCol .medTable tr .mytd{
 	border: 1px solid black;
 	width: 31.5%;
-	height: 4cm;
+	height: 6cm;
 	float: left;
 }
 
 .thirdCol .info{
 	float:right;
 	margin: 20px;	
+}
+
+.description{
+	width: 20%;
+	float: left;	
+	text-align: left;
+}
+
+.value, .name{
+	word-wrap: break-word;
+	margin: 0 auto;
+	width: 60%;
+	/*text-align: center;*/
+}
+
+.medButton{
+	background-color: #4CAF50;
+    color: white;
+	display: none;
+	width: 40%;
+	margin: 4px;
+}
+
+.mytd:hover .medButton, .medButton:hover{
+	display: block;
+}
+
+.mytd:hover .description, .mytd:hover .value{
+	opacity: 0;
+}
+
+.mytd:hover .name{
+	opacity: 0.8;
 }

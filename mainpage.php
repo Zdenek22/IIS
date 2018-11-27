@@ -8,10 +8,13 @@
 //			fillTable($medicine)
 //			endTable()
 //			mainFindBar()
-//			userInfo($user)
+//			userInfo($id)
 //			endMainPage()
 
 
+require "DBoperations.php"
+
+//	hlavicka + nadpis
 function makeMainPage(){
 	?>
 	<!DOCTYPE html>
@@ -25,8 +28,8 @@ function makeMainPage(){
 	<body>
 		<h1>Lékárna</h1>
 		<div style="margin-bottom: 2cm"></div>
+	<?php
 }
-<?php
 
 
 // vytvoreni tlacitek na leve strane stranky
@@ -34,7 +37,7 @@ function makeMainPage(){
 // Seznam rezervaci - id = reservations
 // Sklad - id = store
 function mainPageButtons(){
-?>	
+	?>	
 		<div class="firstCol">
 			<div class="menu">
 				<!-- TODO akce  -->
@@ -45,16 +48,16 @@ function mainPageButtons(){
 				</form>
 			</div>
 		</div>
-<?php	
+	<?php	
 }
 
 // vytvori tabulku leku, a zacne prvni radek tabulky
 function startTable(){
-?>	
+	?>	
 	<div class="secondCol">
 		<table class="medTable">
 			<tr>
-<?php
+	<?php
 }
 
 // naplni jednu bunku tabulky, pokud je treba, vytvori novy radek tabulky
@@ -69,8 +72,20 @@ function fillTable($medicine, $newline){
 
 	// vytvoreni bunky s lekem
 	?>
-	<td class="mytd">Neco</td>
-<?php	
+	<!-- TODO odkazy na spravne stranky, pridat hodnoty z $user, upravit obrazek -->
+	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
+		<button class="medButton">Rezervovat lék!</button>
+		<button class="medButton">Vydat lék</button>
+		<button class="medButton">Detail léku</button>
+		<div class="description">Název:</div>
+		<div class="name">Marťánci</div>
+		<div class="description">Cena:</div>
+		<div class="value">100Kč</div>
+		<div class="description">Na skladě:</div>
+		<div class="value">100ks</div>
+	</td>
+
+	<?php	
 }
 
 function endTable(){
@@ -78,36 +93,38 @@ function endTable(){
 			</tr>	<!-- konec radku tabulky -->
 		</table>	<!-- konec tabulky -->
 	</div>			<!-- konec secondCol -->
-<?php	
+	<?php	
 }
 
 // vytvoreni baru pro nalezeni leku a ukonceni stranky
 function mainFindBar(){
 	// TODO akce pri hledani leku
-?>
+	?>
 	<div class="thirdCol">
 		<form>
 			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
 		</form>
 
-<?php
+	<?php
 }
 
 // prida na stranku informace o uzivateli
-function userInfo($user){
+function userInfo($id, $database){
 	// TODO $user
-?>	
+	$user = getPerson($id);
+	?>	
 	<div class="info">
 		Uživatel: Pepek Námořník<br>
 		Status: správce/zaměstnanec<br>
 	</div>
-<?php	
+	<?php	
 }
 
 function endMainPage(){
-?>	
+	?>	
 			</div> <!-- konec thirdCol -->
 		</body>
 	</html>
+	<?php
 }
 ?>
