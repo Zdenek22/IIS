@@ -5,18 +5,20 @@ h1{
 	text-align: center;
 }
 
-
+/* sloupec na leve strane stranky s tlacitky pro navigaci */
 .firstCol{
 	width: 10%;
 	float: left;
 }
 
+/* sloupec na pravo s tlacitky pro spravu uctu + hledani leku*/
 .thirdCol{
 	width: 15%;
 	float: left;/*
 	margin-right: 50px;*/
 }
 
+/* prostredni sloupec s tabulkou leku */
 .secondCol{
 	width: 60%;
 	height: 100%;
@@ -24,7 +26,7 @@ h1{
 	margin-left: 5%;
 }
 
-/* Menu buttons */
+/* Menu buttons - navigace*/
 .menuButtons{
     background-color: #4CAF50;
     color: white;
@@ -43,25 +45,30 @@ h1{
     opacity: 0.8;
 }
 
+/* bar pro hledani */
 .thirdCol .findItem{
 	width: 100%;
 	float: right;
 }
 
+/* tlacitko hledat */
 .thirdCol .findButton{
 	float: right;
     background-color: #4CAF50;
     color: white;
+    cursor: pointer;
 }
 
 .thirdCol .findButton:hover{
 	opacity: 0.8;
 }
 
+/* tabulka pro leky */
 .secondCol .medTable{
 	width: 100%; 
 }
 
+/* bunka tabulky */
 .secondCol .medTable tr .mytd{
 	border: 1px solid #ccc;
 	width: 31.5%;
@@ -69,17 +76,20 @@ h1{
 	float: left;
 }
 
+/* text s informacemi o uzivateli*/
 .thirdCol .info{
 	float:left;
 	margin: 20px;	
 }
 
+/* popis leku (Cena, Skladem,...)*/
 .description{
 	width: 20%;
 	float: left;	
 	text-align: left;
 }
 
+/* Jmeno leku */
 .value, .name{
 	word-wrap: break-word;
 	margin: 0 auto;
@@ -87,12 +97,14 @@ h1{
 	/*text-align: center;*/
 }
 
+/* tlacitka pro Rezervaci/Vydej/detail */
 .medButton{
 	background-color: #4CAF50;
     color: white;
 	display: none;
 	width: 40%;
 	margin: 4px;
+    cursor: pointer;
 }
 
 .mytd:hover .medButton, .medButton:hover{
@@ -111,12 +123,14 @@ h1{
 	opacity: 0.8;
 }
 
+/* tlacitka pro spravu uctu/logout */
 .thirdCol .userButton{
 	background-color: #4CAF50;
     color: white;
     float: right;
 	width: 100%;
-	margin-bottom: 4px;
+	margin-bottom: 4px; 
+	cursor: pointer;
 }
 
 .thirdCol .userButton:hover{
