@@ -116,15 +116,15 @@ function mainFindBar(){
 
 // prida na stranku informace o uzivateli
 function userInfo($id){
-	$person[0] = 'xrita';
-	$person[1] = 'me';
 	$server = new Database_access();
-	$user = $server->getPerson($person);
+	$user = $server->getInformation($id);
 	?>	
 	<div class="info">
-		Uživatel: Pepek Namornik<br>
-		login: <?echo $user['login'];?><br>
-		Status: správce/zaměstnanec<br>
+		Uživatel: <? echo $user['jmeno'] $user['prijmeni']; ?><br>
+		Login: <? echo $user['login']; ?><br>
+		Email: <? echo $user['email']; ?><br>
+		Telefon: <? echo $user['telefon']; ?><br>
+		Status: <? echo $user['postaveni']; ?><br>
 	</div>
 	<br>
 	<form action="accountInfo.php" method="get">
