@@ -85,10 +85,11 @@ function fillTable($medicine, $newline){
 		<div class="name">Marťánci</div>
 		<div class="description">Cena:</div>
 		<div class="value">100Kč</div>
-		<div class="description">Na skladě:</div>
+		<div class="description">Skladem:</div>
 		<div class="value">100ks</div>
+		<div class="description">Předpis:</div>
+		<div class="value">Ne</div>
 	</td>
-
 	<?php	
 }
 
