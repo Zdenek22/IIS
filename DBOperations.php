@@ -11,6 +11,11 @@ class Database_access
         $this->lastError = NULL;
     }
 
+    public function __destruct()
+    {
+        $this->pdo = NULL;
+    }
+
     function connect_db()
     {
         $dsn = "mysql:host=localhost;dbname=xgrego18;port=/var/run/mysql/mysql.sock";
@@ -41,6 +46,30 @@ class Database_access
         return $stmt->fetch();
     }
     
+    //na zaklade ID vypise JMENO POBOCKY
+    function getPobockaName($id)
+    {
+        $stmt = $this->pdo->prepare('SELECT jmeno FROM pobocka WHERE id = ?');
+        $stmt->execute(array($id));
+        $result = $stmt->fetch();
+        return $result['jmeno'];
+    }
+
+    //na zaklade LOGIN vypise OSOBNI UDAJE
+    function getInformation($id)
+    {
+        $stmt = $this->pdo->prepare('SELECT jmeno, prijmeni, pobocka, email, telefon, postaveni FROM uzivatel WHERE login = ?');
+        $stmt->execute(array($id));
+        $result = $stmt->fetch();
+        if(isset($result)){
+            $result['pobocka'] = $this->getPobockaName($result['pobocka']);
+            $result[2] = $result['pobocka'];
+        }
+        return $result;
+    }
+
+
+
     function addPerson($data)
     {
         $stmt = $this->pdo->prepare('INSERT INTO users (name, surname) VALUES (:name, :surname)');
