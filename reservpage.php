@@ -112,8 +112,8 @@ function reservFindBar(){
 	?>
 	<div class="thirdCol">
 		<caption style="float: left;">Najdi rezervaci:</caption>
-		<form action="findReserv.php" method="get">
-			<input class="findItem" type="text" name="findItem" placeholder="Číslo rezervace">
+		<form action="reservation.php" method="get">
+			<input class="findItem" type="text" name="hledej" placeholder="Číslo rezervace">
 			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
 
