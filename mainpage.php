@@ -32,7 +32,6 @@ function makeMainPage(){
 	<?php
 }
 
-
 // vytvoreni tlacitek na leve strane stranky
 function mainPageButtons(){
 	?>	
@@ -135,8 +134,8 @@ function mainFindBar(){
 	?>
 	<div class="thirdCol">
 		<caption style="float: left;">Najdi lék:</caption>
-		<form action="findMedicine.php" method="get">
-			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
+		<form action="main.php" method="get">
+			<input class="findItem" type="text" name="hledat" placeholder="Hledej lék">
 			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
 
@@ -154,7 +153,7 @@ function userInfo($id){
 	else{
 		$status = "správce";
 	}
-	
+
 	$mail;
 	$phone;
 
