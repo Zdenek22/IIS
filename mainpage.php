@@ -74,18 +74,22 @@ function fillTable($medicine, $newline){
 		<?php
 	}
 
+	// vytvoreni bunky s lekem
+	?>
+	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
+	<?php
+	
 	$predpis = -1;
 	if($medicine['predpis'] == 1){
 		$predpis = "Ano";
+		?>
+		<button class="medButton">Rezervovat lék!</button>
+		<?php
 	}
 	else{
 		$predpis = "Ne";
 	}
-
-	// vytvoreni bunky s lekem
 	?>
-	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
-		<button class="medButton">Rezervovat lék!</button>
 		<button class="medButton">Vydat lék</button>
 		<button class="medButton">Detail léku</button>
 		<div class="description">Název:</div>
