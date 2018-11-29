@@ -81,14 +81,13 @@ body{
 	border: 1px solid #ccc;
 	width: 32.22%;			/*32.967%;*/
 	height: 6cm;
-	float: left;
+	float: left;;
 }
 
 /* text s informacemi o uzivateli*/
 .thirdCol .info{
 	float:left;
-	margin-top: 40px;
-	margin-bottom: 20px;	
+	margin-bottom: 20px;margin-top: 40px;	
 }
 
 /* popis leku (Cena, Skladem,...)*/
@@ -96,6 +95,7 @@ body{
 	width: 20%;
 	float: left;	
 	text-align: left;
+	margin-left: 6px;
 }
 
 /* Jmeno leku */
@@ -166,7 +166,7 @@ body{
 	text-align: center;
 	/*width: 13.6%;
 	height: 100%;
-	float: left;*/ 					/* 	TODO pozicovani */
+	float: left;*/
 }
 
 /* tlacitko pro vydej rezervovaneho leku */
@@ -176,6 +176,7 @@ body{
     color: white;
 	border: 1px solid #ccc;
 	border-collapse: collapse;
+	cursor: pointer;
 }
 
 /* tlacitko pro zruseni rezervace */
@@ -184,9 +185,51 @@ body{
     background-color: red;
     color: white;
 	border: 1px solid #ccc;
-	border-collapse: collapse;    
+	border-collapse: collapse; 
+	cursor: pointer;   
 }
 
 .giveButton:hover, .cancelButton:hover{
 	opacity: 0.8;
 }
+
+.accountTable{
+	width: 20%;
+	margin-left: 5%;
+}
+
+.accountTable .des{
+	text-align: left;
+}
+
+.accountTable .val{
+	text-align: right;
+	padding-left: 15px;
+}
+
+.changeButton{
+	width: 60px;
+	margin-left: 30px;
+	background-color: #4CAF50;
+    color: white;
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	cursor: pointer;
+}
+
+.changeButton:hover{
+	opacity: 0.8;
+}
+
+.infoWithoutFind{
+	float:left;
+	margin-bottom: 20px;
+}
+/*
+.imgcontainer {
+    text-align: left;
+}
+img.logo {
+    width: 10%;
+    border-radius: 10%;
+}*/

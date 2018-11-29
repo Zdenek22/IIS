@@ -34,9 +34,6 @@ function makeMainPage(){
 
 
 // vytvoreni tlacitek na leve strane stranky
-// Hlavni stranka - id = mainPage
-// Seznam rezervaci - id = reservations
-// Sklad - id = store
 function mainPageButtons(){
 	?>	
 	<div class="firstCol">
@@ -50,6 +47,26 @@ function mainPageButtons(){
 			<form action="store.php" method="get">	
 				<button id="store" class="menuButtons" type="submit">Sklad</button>
 			</form>
+
+			<?php
+			$server = new Database_access();
+			$user = $server->getInformation($_SESSION['user']);
+
+			// pokud je spravce
+			if($user['postaveni'] == 1){
+				?>
+				<form >
+					<button style="margin-top: 100px;" class="menuButtons" type="submit">Spravce 1</button>	
+				</form>
+				<form>
+					<button class="menuButtons" type="submit">Spravce do</button>	
+				</form>
+				<form>
+					<button class="menuButtons" type="submit">Spravce lele</button>
+				</form>
+				<?php
+			}
+			?>
 		</div>
 	</div>
 	<?php	
@@ -137,18 +154,36 @@ function userInfo($id){
 	else{
 		$status = "správce";
 	}
+	
+	$mail;
+	$phone;
+
+	if(!(isset($user['telefon']))){
+		$phone = "N/A";
+	}
+	else{
+		$phone = $user['telefon'];
+	}
+
+	if(!(isset($user['email']))){
+		$mail = "N/A";
+	}
+	else{
+		$mail = $user['email'];
+	}
+
 	?>	
 	<div class="info">
 		Uživatel: <? echo $user['jmeno'];echo " "; echo $user['prijmeni']; ?><br>
 		Login: <? echo $_SESSION['user']; ?><br>
-		Email: <? echo $user['email']; ?><br>
-		Telefon: <? echo $user['telefon']; ?><br>
+		Email: <? echo $mail; ?><br>
+		Telefon: <? echo $phone; ?><br>
 		Status: <? echo $status; ?><br>
 		Pobočka: <? echo $user['pobocka']; ?><br>
 	</div>
 	<br>
-	<form action="accountInfo.php" method="get">
-		<button id="accountInfo" class="userButton" type="submit">Správa účtu</button>
+	<form action="account.php" method="get">
+		<button id="account" class="userButton" type="submit">Správa účtu</button>
 	</form>	
 	<form action="logout.php" method="get">
 		<button id="logout" class="userButton" type="submit">Odhlásit se</button>
