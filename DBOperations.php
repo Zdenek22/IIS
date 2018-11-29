@@ -49,6 +49,15 @@ class Database_access
         }
     }
     
+    //vraci seznam OTEVRENYCH rezervaci na zadane pobocce
+    function getReservations($idPobocky)
+    { 
+            $null=null;
+            $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, rezervace.pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka WHERE rezervace.pobocka= ? AND rezervace.pobocka = pobocka.id AND rezervace.ukoncil is null LIMIT 100');
+            $stmt->execute(array($idPobocky));
+            return $stmt->fetchAll();
+    }
+
     //pouzivano
     function getPerson($id)
     {
@@ -62,6 +71,26 @@ class Database_access
     {
         $stmt = $this->pdo->prepare('SELECT jmeno FROM pobocka WHERE id = ?');
         $stmt->execute(array($id));
+        $result = $stmt->fetch();
+        return $result['jmeno'];
+    }
+
+    function getMedsInReservation($idRezervace){
+        $stmt = $this->pdo->prepare('SELECT rezervace, lek, pocet FROM rezervuje WHERE rezervace = ? LIMIT 100');
+            $stmt->execute(array($idRezervace));
+            return $stmt->fetchAll();
+    }
+
+    function getMedsValue($idLeku){
+        $stmt = $this->pdo->prepare('SELECT cena FROM lek WHERE id = ? LIMIT 100');
+        $stmt->execute(array($idLeku));
+        $result = $stmt->fetch();
+        return $result['cena'];
+    }
+
+    function getMedsName($idLeku){
+        $stmt = $this->pdo->prepare('SELECT jmeno FROM lek WHERE id = ? LIMIT 100');
+        $stmt->execute(array($idLeku));
         $result = $stmt->fetch();
         return $result['jmeno'];
     }
