@@ -31,25 +31,7 @@ foreach($medicaments as $key => $value){
 		fillTable($value, true);
 }
 
-$reservations = $server->getReservations($_SESSION['pobocka']);
-echo "juhu $_SESSION[pobocka] huu";
-foreach ($reservations as $key => $value) {
-	$leky = $server->getMedsInReservation($value['id']);
-	$pocet = count($leky);
-	$counter = 0;
-	foreach ($leky as $keyy => $valuee) {
-		$cena = $server->getMedsValue($valuee['lek']);
-		$leky[$counter]['rezervace'] = $cena;
-		$leky[$counter]['lek'] = $server->getMedsName($valuee['lek']);
-		$counter = $counter+1;
-	}
-	foreach ($leky as $key => $value) {
-		echo "$key je $value <br>";
-		foreach ($value as $keyy => $valuee) {
-			echo "$keyy je $valuee <br>";}
-	}
-	
-}
+
 
 
 endTable();
