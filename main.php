@@ -12,19 +12,27 @@ makeMainPage();
 mainPageButtons();
 startTable();
 
-$server = new Database_access();
-$person = $server->getInformation($_SESSION['user']);
-echo($_SESSION['user']);
-foreach($person as $key => $value){
-	//if($key === "pobocka" or $key === 2)
-	//	$value=$server->getPobockaName($value);
-
-	echo "$key je $value aa<br>";
+if(isset($_POST['hledat'])){
+	$jmeno=$_POST['hledat'];
+}
+else{
+	$jmeno='';
 }
 
-fillTable('xrita', false);
+$server = new Database_access();
+$medicaments = $server->getMedicament($jmeno, $_SESSION['pobocka']);
+
+$counter = 1;
+foreach($medicaments as $key => $value){
+	$counter = $counter +1;
+	if($counter%3==0)
+		fillTable($value, false);
+	else
+		fillTable($value, true);
+}
+
 endTable();
 mainFindBar();
-userInfo('xrita');
+userInfo($_SESSION['user']);
 endMainPage();
 ?>

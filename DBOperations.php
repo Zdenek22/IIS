@@ -33,12 +33,23 @@ class Database_access
             return $this->lastError[2]; //the message
     }
     
-    function getPeople()
+
+    //Funkce vraci seznam leku a jejich mnozstvi nachazejicich se na ID POBOCKY. Pokud jmeno leku neni specifikovano, vrati vsechny
+    function getMedicament($jmeno,$idPobocky)
     {
-        $stmt = $this->pdo->query('SELECT id, name, surname FROM users LIMIT 100');
-        return $stmt;
+        if($jmeno === ''){
+            $stmt = $this->pdo->prepare('SELECT lek.jmeno, lek.cena, lek.predpis, lek.popis, skladem.pocet FROM lek, skladem WHERE skladem.pobocka= ? AND lek.id = skladem.lek');
+            $stmt->execute(array($idPobocky));
+            return $stmt->fetchAll();
+        }
+        else{
+            $stmt = $this->pdo->prepare('SELECT lek.jmeno, lek.cena, lek.predpis, lek.popis, skladem.pocet  FROM lek, skladem WHERE skladem.pobocka= ? AND lek.id = skladem.lek AND lek.jmeno=?');
+            $stmt->execute(array($idPobocky, $jmeno));
+            return $stmt->fetchAll();
+        }
     }
     
+    //pouzivano
     function getPerson($id)
     {
         $stmt = $this->pdo->prepare('SELECT login, heslo, jmeno, prijmeni, pobocka, email, telefon, postaveni FROM uzivatel WHERE login = ? AND heslo = ?');

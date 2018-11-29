@@ -23,6 +23,7 @@ if(empty($person)){	// NEPODARILO SE PRIHLASIT
 else{	//Jsme prihlaseni
  	//Ulozeni prihlaseni. Nastavim SESSION a ulozim aktivni Cookie
  	$_SESSION['user']=$person['login'];
+ 	$_SESSION['pobocka'] = $person['pobocka'];
  	setcookie("Active", 1, time()+3600,"/"); 
  	redirect('main.php');
 
