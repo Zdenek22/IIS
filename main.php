@@ -12,8 +12,8 @@ makeMainPage();
 mainPageButtons();
 startTable();
 
-if(isset($_POST['hledat'])){
-	$jmeno=$_POST['hledat'];
+if(isset($_GET['hledat'])){
+	$jmeno=$_GET['hledat'];
 }
 else{
 	$jmeno='';
@@ -22,15 +22,17 @@ else{
 $server = new Database_access();
 $medicaments = $server->getMedicament($jmeno, $_SESSION['pobocka']);
 
-$counter = 1;
+$counter = 0;
 foreach($medicaments as $key => $value){
-	$counter = $counter +1;
 	if($counter%3==0)
-		fillTable($value, false);
+		if($counter == 0)
+			fillTable($value, false);
+		else
+			fillTable($value, true);
 	else
-		fillTable($value, true);
+		fillTable($value, false);
+	$counter = $counter +1;
 }
-
 
 
 

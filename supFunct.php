@@ -50,7 +50,7 @@ foreach ($reservations as $key => $value) {
      //       echo "$keyy je $valuee <br>";}
     //}
 
-    fillReservTable($pocet, $reservations, $leky);
+    fillReservTable($pocet, $value, $leky);
 }
 }
 ?>

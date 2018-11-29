@@ -53,7 +53,7 @@ class Database_access
     function getReservations($idPobocky)
     { 
             $null=null;
-            $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, rezervace.pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka WHERE rezervace.pobocka= ? AND rezervace.pobocka = pobocka.id AND rezervace.ukoncil is null LIMIT 100');
+            $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE rezervace.pobocka= ? AND rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.ukoncil is null LIMIT 100');
             $stmt->execute(array($idPobocky));
             return $stmt->fetchAll();
     }
