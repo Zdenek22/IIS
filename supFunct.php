@@ -25,13 +25,13 @@ function checkNsetLogin(){
     } 
 }
 
-function vypisRezervace($idPobocky){
+function vypisRezervace($idPobocky,$idRezervace){
     $server = new Database_access();
 
     if($idPobocky==='')
-        $reservations = $server->getReservations($_SESSION['pobocka']);
+        $reservations = $server->getReservations($_SESSION['pobocka'],$idRezervace);
     else
-        $reservations = $server->getReservations($idPobocky);
+        $reservations = $server->getReservations($idPobocky,$idRezervace);
     
 
 foreach ($reservations as $key => $value) {

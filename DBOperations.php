@@ -50,11 +50,16 @@ class Database_access
     }
     
     //vraci seznam OTEVRENYCH rezervaci na zadane pobocce
-    function getReservations($idPobocky)
+    function getReservations($idPobocky, $idRezervace)
     { 
-            $null=null;
+        if($idRezervace ===''){
             $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE rezervace.pobocka= ? AND rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.ukoncil is null LIMIT 100');
             $stmt->execute(array($idPobocky));
+        }
+        else{
+            $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE rezervace.pobocka= ? AND rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.id = ?');
+            $stmt->execute(array($idPobocky, $idRezervace));
+        }
             return $stmt->fetchAll();
     }
 

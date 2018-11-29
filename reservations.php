@@ -13,14 +13,14 @@ makeReservPage();
 mainPageButtons();
 startReservTable();
 
-if(isset($_GET['hledat'])){
-	$jmeno=$_GET['hledat'];
+if(isset($_GET['hledej'])){
+	$jmeno=$_GET['hledej'];
 }
 else{
 	$jmeno='';
 }
-echo "pobocka $_SESSION[pobocka]";
-vypisRezervace($_SESSION['pobocka']);
+
+vypisRezervace($_SESSION['pobocka'], $jmeno);
 
 endTable();
 reservFindBar();
