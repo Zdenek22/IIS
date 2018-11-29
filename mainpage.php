@@ -27,7 +27,11 @@ function makeMainPage(){
    	 <title>Lékárna - hlavní stránka</title>
 	</head>
 	<body>
-		<h1>Lékárna</h1>
+	<?php
+	$server = new Database_access();
+	$user = $server->getInformation($_SESSION['user']);
+	?>
+		<h1>Lékárna - <? echo $user['pobocka']; ?></h1>
 		<div style="margin-bottom: 2cm"></div>
 	<?php
 }
@@ -138,7 +142,6 @@ function mainFindBar(){
 			<input class="findItem" type="text" name="hledat" placeholder="Hledej lék">
 			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
-
 	<?php
 }
 
