@@ -42,7 +42,7 @@ function mainPageButtons(){
 	<div class="firstCol">
 		<div class="menu">
 			<form action="main.php" method="get">
-				<button id="mainPage" class="menuButtons" type="submit">Hlavní stránka</button>
+				<button id="mainPage" class="menuButtons" type="submit" style="margin-top: 0;">Hlavní stránka</button>
 			</form>
 			<form action="reservations.php" method="get">
 				<button id="reservations" class="menuButtons" type="submit">Seznam rezervací</button>
@@ -74,21 +74,28 @@ function fillTable($medicine, $newline){
 		<?php
 	}
 
+	$predpis = -1;
+	if($medicine['predpis'] == 1){
+		$predpis = "Ano";
+	}
+	else{
+		$predpis = "Ne";
+	}
+
 	// vytvoreni bunky s lekem
 	?>
-	<!-- TODO odkazy na spravne stranky, pridat hodnoty z $user, upravit obrazek -->
 	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
 		<button class="medButton">Rezervovat lék!</button>
 		<button class="medButton">Vydat lék</button>
 		<button class="medButton">Detail léku</button>
 		<div class="description">Název:</div>
-		<div class="name">Marťánci</div>
+		<div class="name"><? echo $medicine['jmeno']; ?></div>
 		<div class="description">Cena:</div>
-		<div class="value">100Kč</div>
+		<div class="value"><? echo $medicine['cena']; ?> Kč</div>
 		<div class="description">Skladem:</div>
-		<div class="value">100ks</div>
+		<div class="value"><? echo $medicine['pocet']; ?> Ks</div>
 		<div class="description">Předpis:</div>
-		<div class="value">Ne</div>
+		<div class="value"><? echo $predpis ?></div>
 	</td>
 	<?php	
 }
@@ -106,6 +113,7 @@ function mainFindBar(){
 	// TODO akce pri hledani leku
 	?>
 	<div class="thirdCol">
+		<caption style="float: left;">Najdi lék:</caption>
 		<form action="findMedicine.php" method="get">
 			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
 			<button id="find" class="findButton" type="submit">Hledej</button>
@@ -118,13 +126,21 @@ function mainFindBar(){
 function userInfo($id){
 	$server = new Database_access();
 	$user = $server->getInformation($id);
+	$status = -1;
+	if($user['postaveni'] == 0){
+		$status = "zaměstnanec";
+	}
+	else{
+		$status = "správce";
+	}
 	?>	
 	<div class="info">
-		Uživatel: <? echo $user['jmeno'] $user['prijmeni']; ?><br>
-		Login: <? echo $user['login']; ?><br>
+		Uživatel: <? echo $user['jmeno'];echo " "; echo $user['prijmeni']; ?><br>
+		Login: <? echo $_SESSION['user']; ?><br>
 		Email: <? echo $user['email']; ?><br>
 		Telefon: <? echo $user['telefon']; ?><br>
-		Status: <? echo $user['postaveni']; ?><br>
+		Status: <? echo $status; ?><br>
+		Pobočka: <? echo $user['pobocka']; ?><br>
 	</div>
 	<br>
 	<form action="accountInfo.php" method="get">
