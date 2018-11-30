@@ -80,4 +80,20 @@ foreach ($reservations as $key => $value) {
     fillReservTable($pocet, $value, $leky);
 }
 }
+
+//Odstrani cookies tmp, a spolu s nimi zaznamy v tabulkach ktere se jich tykaji
+function deleteTmp(){
+    $server = new Database_access();
+    if(isset($_COOKIE['tmp_rezervace'])){
+         $server->deleteReserves($_COOKIE['tmp_rezervace']);
+         $server->deleteReservation($_COOKIE['tmp_rezervace']);
+         setcookie('tmp_rezervace', 0, time()-3,"/");
+    }
+
+    if(isset($_COOKIE['tmp_zakaznik'])){
+         $server->deleteCustomer($_COOKIE['tmp_zakaznik']);
+         setcookie('tmp_zakaznik', 0, time()-3,"/");
+    }
+
+}
 ?>

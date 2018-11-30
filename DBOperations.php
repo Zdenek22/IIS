@@ -66,6 +66,22 @@ class Database_access
             return $stmt->fetch();
     }
 
+    function insertMeds($idLeku, $idRezervace, $mnozstvi){
+        $stmt = $this->pdo->prepare('SELECT pocet FROM rezervuje WHERE lek = ? AND rezervace = ?');
+        $stmt->execute(array($idLeku, $idRezervace));
+        $res = $stmt->fetch();
+        if(empty($res)){
+            echo "tadyy";
+            $stmt = $this->pdo->prepare("INSERT INTO rezervuje (lek, rezervace, pocet) VALUES(?, ?,?)");
+            $stmt->execute(array($idLeku, $idRezervace, $mnozstvi));
+        }
+        else{
+            $var =$mnozstvi+$res['pocet'];
+            $stmt = $this->pdo->prepare("UPDATE rezervuje SET pocet = ? WHERE lek = ? AND rezervace=?");
+            $stmt->execute(array($var, $idLeku, $idRezervace));
+        }
+    }
+
     //Funkce ulozi zakaznika, zadane RC, jmeno, prijmeni
     function insertZakaznik($RC, $jmeno, $prijmeni)
     {
@@ -140,6 +156,14 @@ class Database_access
         return $result['jmeno'];
     }
 
+    function getMedsID($jmenoLeku){
+        $stmt = $this->pdo->prepare('SELECT id FROM lek WHERE jmeno = ? LIMIT 100');
+        $stmt->execute(array($jmenoLeku));
+        $result = $stmt->fetch();
+        return $result['id'];
+    }
+
+
     //na zaklade LOGIN vypise OSOBNI UDAJE
     function getInformation($id)
     {
@@ -153,7 +177,20 @@ class Database_access
         return $result;
     }
 
+    function deleteReserves($idRezervace){
+        $stmt = $this->pdo->prepare('DELETE FROM rezervuje WHERE rezervace = ?');
+        $stmt->execute(array($idRezervace));
+    }
 
+    function deleteReservation($idRezervace){
+        $stmt = $this->pdo->prepare('DELETE FROM rezervace WHERE id = ?');
+        $stmt->execute(array($idRezervace));
+    }
+
+    function deleteCustomer($RC){
+        $stmt = $this->pdo->prepare('DELETE FROM zakaznik WHERE RC = ?');
+        $stmt->execute(array($RC));
+    }
 
     function addPerson($data)
     {

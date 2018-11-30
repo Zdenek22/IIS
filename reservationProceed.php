@@ -6,7 +6,8 @@ require_once "DBOperations.php";
 require_once "supFunct.php";
 
 $server = new Database_access();
-
+//echo "lek je $_POST[lek], mnozstvi je $_POST[amount]";
+$idRezervace;
 if(!(isset($_COOKIE['tmp_rezervace']))){
 	echo "susa neni nastavena<br>";
 	$zalohaPOST=$_POST;
@@ -70,18 +71,22 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 			<?
 		}
 	}
-	else{	//pridame TMP zakaznika do nasi databaze
+	else{	//pridame TMP zakaznika do nasi databaze, pokud budeme rusit rezervaci a toto bude jeho jedina, odstranime zakaznika
 		$server -> insertZakaznik($_POST['RC'],$_POST['jmeno'],$_POST['prijmeni']);
 		setcookie("tmp_zakaznik", $_POST['RC'], time()+3600*24*7*365*5,"/"); 
 	}
 	//vytvorime docasnou rezervaci
 	$idRezervace = $server->insertReservation($_SESSION['user'], $pojistovna['id'], $_POST['RC'], $_SESSION['pobocka']);  //TODO zmenit pobocku podle zadane pobocky
-	setcookie("tmp_rezervace", $idRezervace, time()+3600*24*7*365*5,"/"); 
+	setcookie('tmp_rezervace', $idRezervace, time()+3600*24*7,"/");
 
-	//TODO do rezervuje pridat lek a mnozstvi
 }
 
-	//TODO do rezervuje pridat lek a mnozstvi
+$id = $server->getMedsID($_POST['lek']);
+echo "$id je id";
+if(isset($_COOKIE['tmp_rezervace']))
+	$server -> insertMeds($id,$_COOKIE['tmp_rezervace'] , $_POST['amount']);
+else
+	$server -> insertMeds($id,$idRezervace, $_POST['amount']);
 
 	//TODO vytvorit funkci, ktera pri logoutu, nebo i na jinych mistech odebere tmp_cookie a zaznamy na ktere odkazuji z DB
 ?>
