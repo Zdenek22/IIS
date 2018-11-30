@@ -388,6 +388,7 @@ body{
 	float: right;
 	background-color: #4CAF50;
     color: white;
+    cursor: pointer;
 }
 
 .odebratButton{
@@ -395,6 +396,11 @@ body{
 	float: right;
     background-color: red;
     color: white;
+    cursor: pointer;
+}
+
+.pridatButton:hover, .odebratButton:hover{
+	opacity: 0.8;
 }
 
 .skladAmount{
