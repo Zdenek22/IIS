@@ -62,20 +62,60 @@ function amountToSell($medicine){
 				<span class="medDesc">Popis: </span>
 				<span class="medVal"><? echo $popis; ?></span>
 			</div>
-		</div>	
-		<form>
-			<div class="sellAmount">
-				<span class="amountDesc">Množství léku (ks):</span>
-				<input class="numAmount" type="number" name="amount" value="1" min="1">
-				<div class="sellMedButtons">
-					<input class="sellAmountButt" type="submit" name="vydat" value="Vydat">
+		</div>
+		<?php
+		if($medicine['predpis'] == 1){
+			?>
+
+			<form>
+				<div class="userForm" style="float: left">
+					<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
+					<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<span class="formDesc">Jméno</span>
+					<input class="userInput" type="text" name="jmeno" placeholder="Jméno" required="required">
+						<br>
+					<span class="formDesc">Příjmení</span>
+					<input class="userInput" type="text" name="prijmeni" placeholder="Příjmení" required="required">
+						<br>
+					<span class="formDesc">Rodné číslo</span>
+					<input class="userInput" type="text" name="RC" placeholder="959959448" required="required">
+						<br>	
+					<span class="formDesc">Pojišťovna</span>
+					<input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required">
+						<br>			
 				</div>
-			</div>
-		</form>	
-		<form action="main.php" class="cancForm">
-			<input class="cancSellAmountButt" type="submit" name="zrusit" value="Zrušit">			
-		</form>
-	</div>		
+				<div class="amount">
+					<span class="amountDesc">Množství léku (ks):</span>
+					<input class="numAmount" type="number" name="amount" value="1" min="1">		
+				</div>
+				<div class="reservMedButtons">
+					<input class="resButt" type="submit" name="vydat" value="Vydat lék">
+				</div>
+			</form>	
+			<form action="main.php">
+				<input class="cancButt2" type="submit" name="zrusit" value="Zrušit">			
+			</form>
+		</div>
+		<?php
+		}
+		else{
+			?>
+			<form>
+				<div class="sellAmount">
+					<span class="amountDesc">Množství léku (ks):</span>
+					<input class="numAmount" type="number" name="amount" value="1" min="1">
+					<div class="sellMedButtons">
+						<input class="sellAmountButt" type="submit" name="vydat" value="Vydat">
+					</div>
+				</div>
+			</form>	
+			<form action="main.php" class="cancForm">
+				<input class="cancSellAmountButt" type="submit" name="zrusit" value="Zrušit">			
+			</form>
+		</div>
+		<?php
+		}
+		?>			
 	<?php			
 }
 

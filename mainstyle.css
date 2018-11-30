@@ -360,3 +360,12 @@ body{
     color: white;
     cursor: pointer;
 }
+
+.cancButt2{
+	float: right;
+	margin: 10px;
+	margin-right: 20%;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
