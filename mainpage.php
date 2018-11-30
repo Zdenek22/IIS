@@ -112,8 +112,8 @@ function fillTable($medicine, $newline){
 		$predpis = "Ne";
 	}
 	?>
-		<form action="" method="get">
-			<button name="" class="medButton">Vydat lék</button>
+		<form action="sellamount.php" method="get">
+			<button name="lek" class="medButton" <?echo "value=";echo '"';echo $medicine['jmeno'];echo '"';?>>Vydat lék</button>
 		</form>
 		<form action="medicinedetail.php" method="get">
 			<button class="medButton" name="lek" <? echo "value=";echo '"';echo $medicine['jmeno'];echo '"'; ?>>Detail léku</button>

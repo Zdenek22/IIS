@@ -301,23 +301,24 @@ body{
 .reservMedButtons{
 	width: 50%;
 	float: left;
-	margin-top: 68px;
 }
 
 .resButt{
 	float: right;
 	margin: 10px;
-	margin-right: 10px;
+	margin-top: 50px;
     background-color: #4CAF50;
     color: white;
+    cursor: pointer;
 }
 
 .cancButt{
-	float: left;
+	float: right;
 	margin: 10px;
+	margin-right: 22%;
     background-color: red;
     color: white;
-    margin-left: 40%;
+    cursor: pointer;
 }
 
 .cancButt:hover, .resButt:hover{
@@ -328,4 +329,34 @@ body{
 	float: left;
 	margin-top: 25px;
 	margin-left: 10px;
+}
+
+.sellMedButtons{
+	float: left;
+}
+
+.cancForm{
+	float: left;
+}
+
+.sellAmount{
+	float: left;
+}
+
+.sellAmountButt{
+	float: left;
+	margin-left: 10px;
+	margin-top: 25px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.cancSellAmountButt{
+	float: right;
+	margin-top: 25px;
+	margin-left: 15px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
 }
