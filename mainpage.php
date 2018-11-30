@@ -115,8 +115,8 @@ function fillTable($medicine, $newline){
 		<form action="" method="get">
 			<button name="" class="medButton">Vydat lék</button>
 		</form>
-		<form action="" method="">
-			<button class="medButton">Detail léku</button>
+		<form action="medicinedetail.php" method="get">
+			<button class="medButton" name="lek" <? echo "value=";echo '"';echo $medicine['jmeno'];echo '"'; ?>>Detail léku</button>
 		</form>
 		<div class="description">Název:</div>
 		<div class="name"><? echo $medicine['jmeno']; ?></div>
