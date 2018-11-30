@@ -43,12 +43,29 @@ class Database_access
             return $stmt->fetchAll();
         }
         else{
-            $stmt = $this->pdo->prepare('SELECT lek.jmeno, lek.cena, lek.predpis, lek.popis, skladem.pocet  FROM lek, skladem WHERE skladem.pobocka= ? AND lek.id = skladem.lek AND lek.jmeno=?');
-            $stmt->execute(array($idPobocky, $jmeno));
+            $stmt = $this->pdo->prepare('SELECT lek.jmeno, lek.cena, lek.predpis, lek.popis, skladem.pocet  FROM lek, skladem WHERE skladem.pobocka= ? AND lek.id = skladem.lek AND lek.jmeno LIKE ?');
+            $stmt->execute(array($idPobocky, $jmeno.'%'));
             return $stmt->fetchAll();
         }
     }
     
+
+    //Funkce vraci ID a JMENO pojistovny, zadane jmenem
+    function getPojistovna($jmeno)
+    {
+            $stmt = $this->pdo->prepare('SELECT id, jmeno  FROM pojistovna WHERE jmeno= ? ');
+            $stmt->execute(array($jmeno));
+            return $stmt->fetch();
+    }
+
+    //Funkce vraci JMENO a PRIJMENI zakaznika, zadane RC
+    function getZakaznik($RC)
+    {
+            $stmt = $this->pdo->prepare('SELECT jmeno, prijmeni FROM zakaznik WHERE RC= ? ');
+            $stmt->execute(array($RC));
+            return $stmt->fetch();
+    }
+
     //vraci seznam OTEVRENYCH rezervaci na zadane pobocce
     function getReservations($idPobocky, $idRezervace)
     { 

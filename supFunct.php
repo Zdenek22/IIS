@@ -25,6 +25,33 @@ function checkNsetLogin(){
     } 
 }
 
+function checkRC($RC){
+    $certovina = 0;
+
+    if(is_numeric($RC)){
+        $certovina +=1;
+    }
+
+    if(($RC>100000000) and ($RC<9999999999) and ($RC%11 === 0)){
+    $certovina +=1;
+    }
+    //and
+    if(( (($RC%100000000 - $RC%1000000)/1000000) < 13)or(( (($RC%100000000 - $RC%1000000)/1000000) > 50) and ( (($RC%100000000 - $RC%1000000)/1000000) < 63))){
+       $certovina +=1;
+    } 
+
+
+    if(( ((($RC%1000000) - ($RC%10000))/10000) > 0 )AND ( ((($RC%1000000) - ($RC%10000))/10000) < 31)) {
+        $certovina +=1;
+    }
+
+    if ($certovina === 4)
+       return true;
+   return false;
+} 
+
+
+
 function vypisRezervace($idPobocky,$idRezervace){
     $server = new Database_access();
 
