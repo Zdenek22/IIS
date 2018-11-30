@@ -61,13 +61,13 @@ function fillStoreTable($medicine){
 		<td>
 			<form>
 				<input class="skladAmount" type="number" name="amount" value="1" min="1">
-				<input class="pridatButton" type="button" name="Pridat" value="Pridat">
+				<input class="pridatButton" type="button" name="Pridat" value="Přidat">
 			</form>
 		</td>
 		<td>
 			<form>
 				<input class="skladAmount" type="number" name="amount" value="1" min="1">
-				<input class="odebratButton" type="button" name="odebrat" value="odebrat">
+				<input class="odebratButton" type="button" name="odebrat" value="Odebrat">
 			</form>	
 		</td>
 	</tr>
