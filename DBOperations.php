@@ -66,6 +66,29 @@ class Database_access
             return $stmt->fetch();
     }
 
+    //Funkce ulozi zakaznika, zadane RC, jmeno, prijmeni
+    function insertZakaznik($RC, $jmeno, $prijmeni)
+    {
+            $stmt = $this->pdo->prepare("INSERT INTO zakaznik (RC, jmeno, prijmeni) VALUES(?, ?,?)");
+            $stmt->execute(array($RC, $jmeno, $prijmeni));
+    }
+
+    function insertReservation($login, $pojistovna, $RC, $pobocka)
+    {
+           // echo "$login, $pojistovna, $RC, $pobocka";
+            $stmt = $this->pdo->prepare("INSERT INTO rezervace (vytvoril, pojistovna, RC, pobocka, ukoncenaVydanim) VALUES(?,?,?,?,0)");
+            $stmt->execute(array($login, $pojistovna, $RC, $pobocka));
+
+            $stmt = $this->pdo->prepare('SELECT id FROM rezervace WHERE vytvoril = ? AND pojistovna = ? AND RC = ?');
+            $stmt->execute(array($login, $pojistovna, $RC));
+            $results = $stmt->fetchAll();
+            $integer;
+            foreach ($results as $key => $value) {
+                $integer = $value['id'];
+            }
+            return $integer;
+    }
+
     //vraci seznam OTEVRENYCH rezervaci na zadane pobocce
     function getReservations($idPobocky, $idRezervace)
     { 
