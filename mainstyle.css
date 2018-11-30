@@ -43,7 +43,6 @@ body{
     margin-bottom: 4px;
     margin-right: 4px;
     margin-top: 4px;
-    border: none;
     cursor: pointer;
     width: 100%;
     display: block;
@@ -238,11 +237,95 @@ body{
 	padding-top: 5px;
 	padding-right: 0px;
 }
-/*
-.imgcontainer {
-    text-align: left;
+
+
+.medicineInfo{
+	float: left;
+	width: 100%;
+	border: 1px solid #ccc;
 }
-img.logo {
-    width: 10%;
-    border-radius: 10%;
-}*/
+
+.medicineInfo .text{
+	float: left;
+	width: 50%;
+	margin-left: 40px;
+}
+
+.userForm{
+	margin-top: 30px;
+	padding: 10px;
+	float: left;
+	/*border: 1px solid #ccc;*/
+}
+
+.formDesc{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.userInput{
+	float: right;
+	margin-left: 40px;
+	margin-bottom: 7px;
+	margin-top: 10px;
+}
+
+.amount{	
+	width: 50%;
+	margin-top: 30px;
+	padding: 10px;
+	float: right;
+}
+
+.amountDesc{
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 25px;
+}
+
+.medDesc{
+	float: left;
+	line-height: 110%;
+}
+
+.medVal{
+	width: 60%;
+	float: right;
+	padding-right: 20%; 
+	line-height: 110%; 
+}
+
+.reservMedButtons{
+	width: 50%;
+	float: left;
+	margin-top: 68px;
+}
+
+.resButt{
+	float: right;
+	margin: 10px;
+	margin-right: 10px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancButt{
+	float: left;
+	margin: 10px;
+    background-color: red;
+    color: white;
+    margin-left: 40%;
+}
+
+.cancButt:hover, .resButt:hover{
+	opacity: 0.8;
+}
+
+.numAmount{
+	float: left;
+	margin-top: 25px;
+	margin-left: 10px;
+}

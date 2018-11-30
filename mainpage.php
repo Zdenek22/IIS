@@ -103,15 +103,21 @@ function fillTable($medicine, $newline){
 	if($medicine['predpis'] == 1){
 		$predpis = "Ano";
 		?>
-		<button class="medButton">Rezervovat lék!</button>
+		<form action="createreserv.php" method="get">
+			<button name="lek" class="medButton" <?echo "value=";echo '"';echo $medicine['jmeno'];echo '"';?>>Rezervovat lék!</button>
+			</form>
 		<?php
 	}
 	else{
 		$predpis = "Ne";
 	}
 	?>
-		<button class="medButton">Vydat lék</button>
-		<button class="medButton">Detail léku</button>
+		<form action="" method="get">
+			<button name="" class="medButton">Vydat lék</button>
+		</form>
+		<form action="" method="">
+			<button class="medButton">Detail léku</button>
+		</form>
 		<div class="description">Název:</div>
 		<div class="name"><? echo $medicine['jmeno']; ?></div>
 		<div class="description">Cena:</div>
