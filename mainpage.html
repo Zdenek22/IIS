@@ -27,16 +27,16 @@ function makeMainPage(){
    	 <title>Lékárna - hlavní stránka</title>
 	</head>
 	<body>
-	<?php
-	$server = new Database_access();
-	$user = $server->getInformation($_SESSION['user']);
-	?>
-		<h1>Lékárna - pobočka <? echo $user['pobocka']; ?></h1>
+		<h1>Lékárna</h1>
 		<div style="margin-bottom: 2cm"></div>
 	<?php
 }
 
+
 // vytvoreni tlacitek na leve strane stranky
+// Hlavni stranka - id = mainPage
+// Seznam rezervaci - id = reservations
+// Sklad - id = store
 function mainPageButtons(){
 	?>	
 	<div class="firstCol">
@@ -50,26 +50,6 @@ function mainPageButtons(){
 			<form action="store.php" method="get">	
 				<button id="store" class="menuButtons" type="submit">Sklad</button>
 			</form>
-
-			<?php
-			$server = new Database_access();
-			$user = $server->getInformation($_SESSION['user']);
-
-			// pokud je spravce
-			if($user['postaveni'] == 1){
-				?>
-				<form >
-					<button style="margin-top: 100px;" class="menuButtons" type="submit">Spravce 1</button>	
-				</form>
-				<form>
-					<button class="menuButtons" type="submit">Spravce do</button>	
-				</form>
-				<form>
-					<button class="menuButtons" type="submit">Spravce lele</button>
-				</form>
-				<?php
-			}
-			?>
 		</div>
 	</div>
 	<?php	
@@ -94,30 +74,20 @@ function fillTable($medicine, $newline){
 		<?php
 	}
 
-	// vytvoreni bunky s lekem
-	?>
-	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
-	<?php
-	
 	$predpis = -1;
 	if($medicine['predpis'] == 1){
 		$predpis = "Ano";
-		?>
-		<form action="createreserv.php" method="get">
-			<button name="lek" class="medButton" <?echo "value=";echo '"';echo $medicine['jmeno'];echo '"';?>>Rezervovat lék!</button>
-			</form>
-		<?php
 	}
 	else{
 		$predpis = "Ne";
 	}
+
+	// vytvoreni bunky s lekem
 	?>
-		<form action="sellamount.php" method="get">
-			<button name="lek" class="medButton" <?echo "value=";echo '"';echo $medicine['jmeno'];echo '"';?>>Vydat lék</button>
-		</form>
-		<form action="medicinedetail.php" method="get">
-			<button class="medButton" name="lek" <? echo "value=";echo '"';echo $medicine['jmeno'];echo '"'; ?>>Detail léku</button>
-		</form>
+	<td class="mytd" align="center" valign="center"><img src="bottle.png" style="width: 40%; height: 40%; float: top;"><br><br>
+		<button class="medButton">Rezervovat lék!</button>
+		<button class="medButton">Vydat lék</button>
+		<button class="medButton">Detail léku</button>
 		<div class="description">Název:</div>
 		<div class="name"><? echo $medicine['jmeno']; ?></div>
 		<div class="description">Cena:</div>
@@ -144,10 +114,11 @@ function mainFindBar(){
 	?>
 	<div class="thirdCol">
 		<caption style="float: left;">Najdi lék:</caption>
-		<form action="main.php" method="get">
-			<input class="findItem" type="text" name="hledat" placeholder="Hledej lék">
+		<form action="findMedicine.php" method="get">
+			<input class="findItem" type="text" name="findItem" placeholder="Hledej lék">
 			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
+
 	<?php
 }
 
@@ -162,36 +133,18 @@ function userInfo($id){
 	else{
 		$status = "správce";
 	}
-
-	$mail;
-	$phone;
-
-	if(!(isset($user['telefon']))){
-		$phone = "N/A";
-	}
-	else{
-		$phone = $user['telefon'];
-	}
-
-	if(!(isset($user['email']))){
-		$mail = "N/A";
-	}
-	else{
-		$mail = $user['email'];
-	}
-
 	?>	
 	<div class="info">
 		Uživatel: <? echo $user['jmeno'];echo " "; echo $user['prijmeni']; ?><br>
 		Login: <? echo $_SESSION['user']; ?><br>
-		Email: <? echo $mail; ?><br>
-		Telefon: <? echo $phone; ?><br>
+		Email: <? echo $user['email']; ?><br>
+		Telefon: <? echo $user['telefon']; ?><br>
 		Status: <? echo $status; ?><br>
 		Pobočka: <? echo $user['pobocka']; ?><br>
 	</div>
 	<br>
-	<form action="account.php" method="get">
-		<button id="account" class="userButton" type="submit">Správa účtu</button>
+	<form action="accountInfo.php" method="get">
+		<button id="accountInfo" class="userButton" type="submit">Správa účtu</button>
 	</form>	
 	<form action="logout.php" method="get">
 		<button id="logout" class="userButton" type="submit">Odhlásit se</button>

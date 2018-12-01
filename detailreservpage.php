@@ -1,16 +1,23 @@
 <?php
 
+// funkce pro vytvoreni stranky skladu
+
+
 // nektere funkce jsou v mainpage.php, takto se zkompletuje stranka
 // usage:	makeDetailReservPage()
 //			mainPageButtons()
 //			reservDetail($count, $reserv, $medicine)
 //			endTable()
 //			userAccountInfo()
-//			endReservDetailPage()
+//			endReservDeatilPage()
 
 
 require_once "DBOperations.php";
 require_once "reservpage.php";
+require_once "mainpage.php";
+require_once "reservpage.php";
+
+
 
 // zacatek stranky s rezervacemi
 function makeDetailReservPage(){
@@ -114,6 +121,5 @@ function endReservDetailPage(){
 	<?php
 }
 ?>
-
 
 
