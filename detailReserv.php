@@ -29,12 +29,11 @@ mainPageButtons();
         $counter = $counter+1;
     }
 
-    fillReservTable($pocet, $_COOKIE["tmp_rezervace"], $leky);
+    reservDetail($pocet, $_COOKIE["tmp_rezervace"], $leky);
 
 
 
 endTable();
-reservFindBar();
 userAccountInfo();
 endReservDetailPage();
 ?>
