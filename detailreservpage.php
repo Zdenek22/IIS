@@ -1,16 +1,23 @@
 <?php
 
+// funkce pro vytvoreni stranky skladu
+
+
 // nektere funkce jsou v mainpage.php, takto se zkompletuje stranka
 // usage:	makeDetailReservPage()
 //			mainPageButtons()
 //			reservDetail($count, $reserv, $medicine)
 //			endTable()
 //			userAccountInfo()
-//			endReservDetailPage()
+//			endReservDeatilPage()
 
 
 require_once "DBOperations.php";
 require_once "reservpage.php";
+require_once "mainpage.php";
+require_once "reservpage.php";
+
+
 
 // zacatek stranky s rezervacemi
 function makeDetailReservPage(){
@@ -69,13 +76,13 @@ function reservDetail($count, $reserv, $medicine){
 		?>
 		<td class="reserValues"><? echo $value['lek']; ?></td>
 		<td class="reserValues"><? echo $value['pocet']; ?></td>
-		<td class="reserValues"><? echo $value['rezervace'] ?></td>
+		<td class="reserValues"><? echo $value['rezervace']; ?></td>
 		<?php
 		if($i == 0){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
-				<form>	
-					<input class="giveButton" type="button" name="give" value="Uložit">
+				<form action="operations.php" method="get">	
+					<input class="giveButton" type="button" name="saveReserv" value="Uložit">
 				</form>
 			</td>
 			<?php
@@ -88,8 +95,8 @@ function reservDetail($count, $reserv, $medicine){
 			<?php
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
-				<form>
-					<input class="cancelButton" type="button" name="cancel" value="Zrušit">
+				<form action="operations.php" method="get">
+					<input class="cancelButton" type="button" name="cancelReserv" value="Zrušit">
 				</form>
 			</td>
 			</tr>
@@ -114,6 +121,5 @@ function endReservDetailPage(){
 	<?php
 }
 ?>
-
 
 
