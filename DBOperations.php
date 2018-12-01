@@ -119,6 +119,13 @@ class Database_access
             return $stmt->fetchAll();
     }
 
+    function getReservation($idRezervace)
+    { 
+        $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE  rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.id = ?');
+        $stmt->execute(array($idRezervace));
+        return $stmt->fetch();
+    }
+
     //pouzivano
     function getPerson($id)
     {

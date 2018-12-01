@@ -29,7 +29,8 @@ mainPageButtons();
         $counter = $counter+1;
     }
 
-    reservDetail($pocet, $_COOKIE["tmp_rezervace"], $leky);
+    $rezervace = $server->getReservation($_COOKIE["tmp_rezervace"]);
+    reservDetail($pocet, $rezervace, $leky);
 
 
 
