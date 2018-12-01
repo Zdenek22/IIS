@@ -60,13 +60,15 @@ function fillStoreTable($medicine){
 		<td><?echo $medicine['pocet']?></td>
 		<td>
 			<form>
-				<input class="skladAmount" type="number" name="amount" value="1" min="1">
+				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input class="skladAmount" type="number" name="addamount" value="1" min="1">
 				<input class="pridatButton" type="button" name="Pridat" value="Přidat">
 			</form>
 		</td>
 		<td>
 			<form>
-				<input class="skladAmount" type="number" name="amount" value="1" min="1">
+				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input class="skladAmount" type="number" name="subamount" value="1" min="1">
 				<input class="odebratButton" type="button" name="odebrat" value="Odebrat">
 			</form>	
 		</td>
