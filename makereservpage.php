@@ -79,7 +79,7 @@ function showMedicine($medicine){
 					</tr>
 					<tr>
 						<td><span class="formDesc">Rodné číslo</span></td>
-						<td><input class="userInput" type="text" name="prijmeni" placeholder="Příjmení" required="required"></td>
+						<td><input class="userInput" type="text" name="RC" placeholder="9605064084" required="required"></td>
 					</tr>
 					<tr>
 						<td><span class="formDesc">Pojišťovna</span></td>
