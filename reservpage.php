@@ -88,15 +88,15 @@ function fillReservTable($count, $reserv, $medicine){
 		if($i == 0){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
-				<form>	
-					<input class="giveButton" type="button" name="give" value="Vydej">
+				<form action="operations.php" method="get">	
+					<input class="giveButton" type="button" name="completeReserv" value="Vydej">
 				</form>
 			</td>
 			<?php
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
-				<form>
-					<input class="cancelButton" type="button" name="give" value="Zrušit">
+				<form action="operations.php" method="get">
+					<input class="cancelButton" type="button" name="deleteReserv" value="Zrušit">
 				</form>
 			</td>
 			</tr>
