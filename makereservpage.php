@@ -64,12 +64,12 @@ function showMedicine($medicine){
 			</div>
 		</div>	
 		<form action="reservationProceed.php" method="post">
+			<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 			<div class="userForm" style="float: left">
 			<?php
 				if(!(isset($_COOKIE['tmp_rezervace']))){
 					?>
 				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
-				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 
 				<table style="float: left;">
 					<tr>
@@ -92,13 +92,16 @@ function showMedicine($medicine){
 				<?php
 				}	
 				?>
-			</div>
+			</div>	
 			
 			<table class="amount">
 				<tr>
 					<td>Množství léku (ks):</td>
 					<td><input type="number" name="amount" value="1" min="1"></td>
-				</tr>	
+				</tr>
+				<?php
+				if(!isset($_COOKIE['tmp_rezervace'])){	
+				?>	
 				<tr>
 					<td>Vyberte pobočku:</td>
 					<td>
@@ -111,6 +114,9 @@ function showMedicine($medicine){
 						</datalist>
   					</td>
 				</tr>
+				<?php
+				}
+				?>
 			</table>
 			<?php
 			if(isset($_COOKIE['tmp_rezervace'])){
@@ -123,7 +129,7 @@ function showMedicine($medicine){
 				<?php
 			}?>
 				<input class="resButt" type="submit" name="rezervovat" value="Rezervovat" >
-			</div>
+				</div>
 		</form>
 		<form action="main.php">
 			<table class="helpTable">
@@ -229,6 +235,7 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 			</table>			
 		</form>
 		<br>
+
 		<?php
 		foreach ($errorMsg as $key => $value) {
 		?>
