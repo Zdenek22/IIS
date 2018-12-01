@@ -83,12 +83,12 @@ function showMedicine($medicine){
 			<table class="amount">
 				<tr>
 					<td>Množství léku (ks):</td>
-					<td><input class="numAmount" type="number" name="amount" value="1" min="1"></td>
+					<td><input type="number" name="amount" value="1" min="1"></td>
 				</tr>	
 				<tr>
 					<td>Vyberte pobočku:</td>
 					<td>
-						<input list="pobocka">
+						<input list="pobocka" required="required">
 						<datalist id="pobocka">
   							<option value="U Raka">
   							<option value="Španělská">
