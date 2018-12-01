@@ -96,7 +96,7 @@ function reservDetail($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">
-					<input class="cancelButton" type="submit" name="cancelReserv" value="Zrušit">
+					<input class="cancelButton" type="submit" name="cancelReserv" value="Storno">
 				</form>
 			</td>
 			</tr>

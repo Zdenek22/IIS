@@ -96,7 +96,7 @@ function fillReservTable($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">
-					<input class="cancelButton" type="submit" name="reservation" value="Zrušit">
+					<input class="cancelButton" type="submit" name="reservation" value="Storno">
 				</form>
 			</td>
 			</tr>
