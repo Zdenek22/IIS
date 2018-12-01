@@ -57,19 +57,21 @@ function fillStoreTable($medicine){
 	?>
 	<tr>
 		<td><?echo $medicine['jmeno'];?></td>
-		<td><?echo $medicine['pocet']?></td>
+		<td><?echo $medicine['pocet'];?></td>
 		<td>
-			<form>
-				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
-				<input class="skladAmount" type="number" name="addamount" value="1" min="1">
-				<input class="pridatButton" type="button" name="Pridat" value="Přidat">
+			<form action="operations.php" method="get">
+				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="pocet" value=<?echo '"';echo $medicine['pocet'];echo '"';?>>
+				<input class="skladAmount" type="number" name="add" value="1" min="1">
+				<input class="pridatButton" type="submit" name="Pridat" value="Přidat">
 			</form>
 		</td>
 		<td>
-			<form>
-				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
-				<input class="skladAmount" type="number" name="subamount" value="1" min="1">
-				<input class="odebratButton" type="button" name="odebrat" value="Odebrat">
+			<form action="operations.php" method="get">
+				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="pocet" value=<?echo '"';echo $medicine['pocet'];echo '"';?>>
+				<input class="skladAmount" type="number" name="sub" value="1" min="1">
+				<input class="odebratButton" type="submit" name="odebrat" value="Odebrat">
 			</form>	
 		</td>
 	</tr>
