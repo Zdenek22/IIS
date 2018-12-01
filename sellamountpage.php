@@ -85,17 +85,24 @@ function amountToSell($medicine){
 					<input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required">
 						<br>			
 				</div>
-				<div class="amount">
-					<span class="amountDesc">Množství léku (ks):</span>
-					<input class="numAmount" type="number" name="amount" value="1" min="1">		
-				</div>
+				<table class="amount">
+					<tr>
+						<td>Množství léku (ks):</td>
+						<td><input type="number" name="amount" value="1" min="1"></td>
+					</tr>	
+				</table>
 				<div class="reservMedButtons">
 					<input class="resButt" type="submit" name="vydat" value="Vydat lék">
 				</div>
 			</form>	
 			<form action="main.php">
-				<input class="cancButt2" type="submit" name="zrusit" value="Zrušit">			
-			</form>
+			<table class="helpTable">
+				<tr>
+					<td style="width: 80%;"></td>
+					<td><input class="cancButt" type="submit" name="zrusit" value="Zrušit"><td>
+				</tr>	
+			</table>			
+		</form>
 		</div>
 		<?php
 		}

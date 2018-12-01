@@ -407,3 +407,16 @@ body{
 	width: 48%;
 	float: left;
 }
+
+.amountDesc{
+	float:left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 25px;
+}
+
+.numAmount{
+	float: left;
+	margin-top: 25px;
+	margin-left: 10px;
+}
