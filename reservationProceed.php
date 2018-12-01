@@ -44,7 +44,7 @@ echo "je to $_POST[pobocka]";
 	}
 
 	if($anyError === 1){
-		echo "chyba";
+		//echo "chyba";
 	?>
 	<form id="myForm" action="createreserv.php" method="post">
 	<?php
@@ -92,7 +92,7 @@ echo "je to $_POST[pobocka]";
 
 
 $id = $server->getMedsID($_POST['lek']);
-echo "$id je id";
+//echo "$id je id";
 if(isset($_COOKIE['tmp_rezervace']))
 	$server -> insertMeds($id,$_COOKIE['tmp_rezervace'] , $_POST['amount']);
 else
