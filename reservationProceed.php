@@ -36,6 +36,12 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 		$anyError = 1;
 	}
 
+echo "je to $_POST[pobocka]";
+	$pobocka=$server->getPobockaID($_POST['pobocka']);
+	if(empty($pobocka)){
+		$_POST['pobocka']=0;
+		$anyError = 1;
+	}
 
 	if($anyError === 1){
 		echo "chyba";
@@ -79,7 +85,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 		setcookie("tmp_zakaznik", $_POST['RC'], time()+3600*24*7*365*5,"/"); 
 	}
 	//vytvorime docasnou rezervaci
-	$idRezervace = $server->insertReservation($_SESSION['user'], $pojistovna['id'], $_POST['RC'], $_SESSION['pobocka']);  //TODO zmenit pobocku podle zadane pobocky
+	$idRezervace = $server->insertReservation($_SESSION['user'], $pojistovna['id'], $_POST['RC'], $pobocka);  
 	setcookie('tmp_rezervace', $idRezervace, time()+3600*24*7,"/");
 
 }

@@ -48,7 +48,8 @@ class Database_access
             return $stmt->fetchAll();
         }
     }
-    
+
+
 
     //Funkce vraci ID a JMENO pojistovny, zadane jmenem
     function getPojistovna($jmeno)
@@ -155,6 +156,14 @@ class Database_access
         $stmt->execute(array($id));
         $result = $stmt->fetch();
         return $result['jmeno'];
+    }
+
+    function getPobockaID($name)
+    {
+        $stmt = $this->pdo->prepare('SELECT id FROM pobocka WHERE jmeno = ?');
+        $stmt->execute(array($name));
+        $result = $stmt->fetch();
+        return $result['id'];
     }
 
     function getMedsInReservation($idRezervace){
