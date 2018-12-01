@@ -67,18 +67,25 @@ function showMedicine($medicine){
 			<div class="userForm" style="float: left">
 				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
-				<span class="formDesc">Jméno</span>
-				<input class="userInput" type="text" name="jmeno" placeholder="Jméno" required="required">
-					<br>
-				<span class="formDesc">Příjmení</span>
-				<input class="userInput" type="text" name="prijmeni" placeholder="Příjmení" required="required">
-					<br>
-				<span class="formDesc">Rodné číslo</span>
-				<input class="userInput" type="text" name="RC" placeholder="959959448" required="required">
-					<br>	
-				<span class="formDesc">Pojišťovna</span>
-				<input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required">
-					<br>			
+
+				<table style="float: left;">
+					<tr>
+						<td><span class="formDesc">Jméno</span></td>
+						<td><input class="userInput" type="text" name="jmeno" placeholder="Jméno" required="required"></td>
+					</tr>
+					<tr>
+						<td><span class="formDesc">Příjmení</span></td>
+						<td><input class="userInput" type="text" name="prijmeni" placeholder="Příjmení" required="required"></td>
+					</tr>
+					<tr>
+						<td><span class="formDesc">Rodné číslo</span></td>
+						<td><input class="userInput" type="text" name="prijmeni" placeholder="Příjmení" required="required"></td>
+					</tr>
+					<tr>
+						<td><span class="formDesc">Pojišťovna</span></td>
+						<td><input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required"></td>
+					</tr>
+				</table>	
 			</div>
 			<table class="amount">
 				<tr>
