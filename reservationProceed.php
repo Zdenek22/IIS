@@ -81,6 +81,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 
 }
 
+
 $id = $server->getMedsID($_POST['lek']);
 echo "$id je id";
 if(isset($_COOKIE['tmp_rezervace']))
@@ -88,5 +89,7 @@ if(isset($_COOKIE['tmp_rezervace']))
 else
 	$server -> insertMeds($id,$idRezervace, $_POST['amount']);
 
-	//TODO vytvorit funkci, ktera pri logoutu, nebo i na jinych mistech odebere tmp_cookie a zaznamy na ktere odkazuji z DB
+
+ redirect('detailReserv.php')
+	
 ?>
