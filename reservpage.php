@@ -29,7 +29,11 @@ function makeReservPage(){
    	 <title>Lékárna - rezervace</title>
 	</head>
 	<body>
-		<h1>Lékárna</h1>
+	<?php
+	$server = new Database_access();
+	$user = $server->getInformation($_SESSION['user']);
+	?>
+		<h1>Lékárna - pobočka <? echo $user['pobocka']; ?></h1>
 		<div style="margin-bottom: 2cm"></div>
 	<?php
 }
@@ -113,10 +117,9 @@ function reservFindBar(){
 	<div class="thirdCol">
 		<caption style="float: left;">Najdi rezervaci:</caption>
 		<form action="reservations.php" method="get">
-			<input class="findItem" type="text" name="hledej" placeholder="Číslo rezervace">
+			<input class="findItem" type="text" name="hledat" placeholder="Číslo rezervace">
 			<button id="find" class="findButton" type="submit">Hledej</button>
 		</form>
-
 	<?php
 }
 
@@ -129,5 +132,6 @@ function endReservPage(){
 	<?php
 }
 ?>
+
 
 

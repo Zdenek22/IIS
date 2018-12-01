@@ -63,11 +63,11 @@ function showMedicine($medicine){
 				<span class="medVal"><? echo $popis; ?></span>
 			</div>
 		</div>	
-		<form action="reservationProceed.php" method='post'>
+		<form action="reservationProceed.php" method="post">
 			<div class="userForm" style="float: left">
-				<caption>Vyplňte formulář:</caption><br>
+				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
+				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 				<span class="formDesc">Jméno</span>
-				<input type="hidden"  name="lek" value=<? echo "$medicine[jmeno]"; ?> >
 				<input class="userInput" type="text" name="jmeno" placeholder="Jméno" required="required">
 					<br>
 				<span class="formDesc">Příjmení</span>
@@ -85,10 +85,12 @@ function showMedicine($medicine){
 				<input class="numAmount" type="number" name="amount" value="1" min="1">		
 			</div>
 			<div class="reservMedButtons">
-				<input class="cancButt" type="submit" name="zrusit" value="Zrušit">
 				<input class="resButt" type="submit" name="rezervovat" value="Rezervovat">
 			</div>
 		</form>	
+		<form action="main.php">
+			<input class="cancButt" type="submit" name="zrusit" value="Zrušit">			
+		</form>
 	</div>		
 	<?php			
 }
@@ -102,5 +104,6 @@ function endMakeReservPage(){
 	<?php
 }
 ?>
+
 
 

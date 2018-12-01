@@ -50,6 +50,15 @@ function mainPageButtons(){
 			<form action="store.php" method="get">	
 				<button id="store" class="menuButtons" type="submit">Sklad</button>
 			</form>
+			<?php
+				if(isset($_COOKIE['tmp_rezervace'])){
+					?>
+					<form action="detailReserv.php" method="get">	
+						<button id="store" class="menuButtons" type="submit">Aktuální rezervace</button>
+					</form>
+					<?php
+				}
+			?>
 
 			<?php
 			$server = new Database_access();

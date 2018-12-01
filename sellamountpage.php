@@ -37,6 +37,7 @@ function makeSellAmountPage(){
 
 // Vytvori formular pro vyber mnozstvi
 function amountToSell($medicine){
+
 	$predpis = -1;
 	if($medicine['predpis'] == 1)
 		$predpis = "Ano";
@@ -51,14 +52,14 @@ function amountToSell($medicine){
 		<div class="medicineInfo">
 			<img src="bottle.png" style="width: 20%; height: 20%; float: left;">
 			<div class="text">
-				<span class="medDesc">Lek: </span>
+				<span class="medDesc">Lék: </span>
 				<span class="medVal"><? echo $medicine['jmeno']; ?></span><br>
 				<span class="medDesc">Cena: </span>
-				<span class="medVal"><? echo $medicine['cena']; ?></span><br>
+				<span class="medVal"><? echo $medicine['cena']; ?> Kč</span><br>
 				<span class="medDesc">Na předpis: </span>
 				<span class="medVal"><? echo $predpis ?></span><br>
 				<span class="medDesc">Skladem: </span>
-				<span class="medVal"><? echo $medicine['pocet']; ?></span><br>
+				<span class="medVal"><? echo $medicine['pocet']; ?> Ks</span><br>
 				<span class="medDesc">Popis: </span>
 				<span class="medVal"><? echo $popis; ?></span>
 			</div>
@@ -128,5 +129,6 @@ function endSellAmountPage(){
 	<?php
 }
 ?>
+
 
 
