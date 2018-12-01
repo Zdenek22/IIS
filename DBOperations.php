@@ -119,6 +119,20 @@ class Database_access
             return $stmt->fetchAll();
     }
 
+
+    //kolik je pocet o kolik se ma pocet leku zvysit
+    function addMeds($lek, $kde, $kolik){
+        $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE  pobocka =? AND lek = ?');
+        $stmt->execute(array($kde, $lek));
+        $result = $stmt->fetch();
+        $result = $result['pocet'];
+        $result+= $kolik;
+
+        $stmt =$this->pdo->prepare('UPDATE skladem SET pocet = ? WHERE pobocka = ? AND lek =?');
+        $stmt->execute(array($result, $kde, $lek));
+    }
+
+
     function getReservation($idRezervace)
     { 
         $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE  rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.id = ?');
