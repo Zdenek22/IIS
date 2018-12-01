@@ -89,7 +89,7 @@ function fillReservTable($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">	
-					<input type="hidden" name="id" value=<?echo '"';echo $id['reserv'];echo '"';?>>
+					<input type="hidden" name="id" value=<?echo '"';echo $reserv['id'];echo '"';?>>
 					<input class="giveButton" type="submit" name="reservation" value="Vydej">
 				</form>
 			</td>
@@ -97,7 +97,7 @@ function fillReservTable($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">
-					<input type="hidden" name="id" value=<?echo '"';echo $id['reserv'];echo '"';?>>
+					<input type="hidden" name="id" value=<?echo '"';echo $reserv['id'];echo '"';?>>
 					<input class="cancelButton" type="submit" name="reservation" value="Storno">
 				</form>
 			</td>
