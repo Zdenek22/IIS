@@ -83,7 +83,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 	setcookie('tmp_rezervace', $idRezervace, time()+3600*24*7,"/");
 
 }
-else{
+
 
 $id = $server->getMedsID($_POST['lek']);
 echo "$id je id";
@@ -94,5 +94,5 @@ else
 
 
  redirect('detailReserv.php');
-}
+
 ?>
