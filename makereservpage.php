@@ -66,7 +66,7 @@ function showMedicine($medicine){
 		<form action="reservationProceed.php" method="post">
 			<div class="userForm" style="float: left">
 				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
-				<input type="hidden" name="lek" class=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 				<span class="formDesc">Jméno</span>
 				<input class="userInput" type="text" name="jmeno" placeholder="Jméno" required="required">
 					<br>
