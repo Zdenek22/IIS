@@ -80,16 +80,35 @@ function showMedicine($medicine){
 				<input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required">
 					<br>			
 			</div>
-			<div class="amount">
-				<span class="amountDesc">Množství léku (ks):</span>
-				<input class="numAmount" type="number" name="amount" value="1" min="1">		
-			</div>
+			<table class="amount">
+				<tr>
+					<td>Množství léku (ks):</td>
+					<td><input class="numAmount" type="number" name="amount" value="1" min="1"></td>
+				</tr>	
+				<tr>
+					<td>Vyberte pobočku:</td>
+					<td>
+						<input list="pobocka">
+						<datalist id="pobocka">
+  							<option value="U Raka">
+  							<option value="Španělská">
+  							<option value="U Černé bobule">
+  							<option value="Babiččina lékárna">
+						</datalist>
+  					</td>
+				</tr>
+			</table>
 			<div class="reservMedButtons">
 				<input class="resButt" type="submit" name="rezervovat" value="Rezervovat">
 			</div>
-		</form>	
+		</form>
 		<form action="main.php">
-			<input class="cancButt" type="submit" name="zrusit" value="Zrušit">			
+			<table class="helpTable">
+				<tr>
+					<td style="width: 80%;"></td>
+					<td><input class="cancButt" type="submit" name="zrusit" value="Zrušit"><td>
+				</tr>	
+			</table>			
 		</form>
 	</div>		
 	<?php			
