@@ -89,14 +89,14 @@ function fillReservTable($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">	
-					<input class="giveButton" type="button" name="completeReserv" value="Vydej">
+					<input class="giveButton" type="submit" name="reservation" value="Vydej">
 				</form>
 			</td>
 			<?php
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">
-					<input class="cancelButton" type="button" name="deleteReserv" value="Zrušit">
+					<input class="cancelButton" type="submit" name="reservation" value="Zrušit">
 				</form>
 			</td>
 			</tr>
