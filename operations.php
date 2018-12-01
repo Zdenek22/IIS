@@ -30,7 +30,7 @@ if(isset($_GET['sub'])){
 	else{
 	$id = $server->getMedsID($_GET['lek']);
 	$tmp= $server->addMeds($id, $_SESSION['pobocka'], $_GET['sub']*(-1));
-	//redirect('store.php');
+	redirect('store.php');
 	}
 }
 
