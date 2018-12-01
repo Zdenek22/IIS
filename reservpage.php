@@ -83,7 +83,7 @@ function fillReservTable($count, $reserv, $medicine){
 		?>
 		<td class="reserValues"><? echo $value['lek']; ?></td>
 		<td class="reserValues"><? echo $value['pocet']; ?></td>
-		<td class="reserValues"><? echo $value['rezervace'] ?></td>
+		<td class="reserValues"><? echo $value['rezervace']; ?></td>
 		<?php
 		if($i == 0){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
