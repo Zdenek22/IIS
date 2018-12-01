@@ -82,21 +82,21 @@ function reservDetail($count, $reserv, $medicine){
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">	
-					<input class="giveButton" type="button" name="saveReserv" value="Uložit">
+					<input class="giveButton" type="submit" name="saveReserv" value="Uložit">
 				</form>
 			</td>
 			<?php
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
-				<form>
-					<input class="giveButton" type="button" name="add" value="Přidat lék">
+				<form action="main.php">
+					<input class="giveButton" type="submit" name="add" value="Přidat lék">
 				</form>
 			</td>
 			<?php
 			echo "<td rowspan=";echo '"';echo $count;echo '"';echo ">";
 			?>
 				<form action="operations.php" method="get">
-					<input class="cancelButton" type="button" name="cancelReserv" value="Zrušit">
+					<input class="cancelButton" type="submit" name="cancelReserv" value="Zrušit">
 				</form>
 			</td>
 			</tr>
