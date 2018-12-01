@@ -48,4 +48,11 @@ if(isset($_GET['cancelReserv'])){
 	deleteTmp();
 	redirect('main.php');
 }
+
+if(isset($_GET['reservation']) and $_GET['reservation'] === 'Storno'){
+	echo "$_GET[id]";
+	$server->eraseReservation($_GET['id'], $_SESSION['user']);
+	redirect('reservations.php');
+
+}
 ?>

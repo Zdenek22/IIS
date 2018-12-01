@@ -133,12 +133,26 @@ class Database_access
         $stmt->execute(array($result, $kde, $lek));
     }
 
+    function eraseReservation($idRezervace, $kdo){
+        $stmt =$this->pdo->prepare('UPDATE rezervace SET ukoncil=?, ukoncenaVydanim = 0 WHERE id =?');
+        $stmt->execute(array($kdo, $idRezervace));
+    }
+
+    function completeReservation($idRezervace, $kdo){
+        $stmt =$this->pdo->prepare('UPDATE rezervace SET ukoncil=?, ukoncenaVydanim = 1 WHERE id =?');
+        $stmt->execute(array($kdo, $idRezervace));
+    }
 
     function getReservation($idRezervace)
     { 
         $stmt = $this->pdo->prepare('SELECT rezervace.id, rezervace.vytvoril, pojistovna.jmeno pojistovna, rezervace.RC, pobocka.jmeno  FROM rezervace, pobocka, pojistovna WHERE  rezervace.pobocka = pobocka.id AND pojistovna.id = rezervace.pojistovna AND rezervace.id = ?');
         $stmt->execute(array($idRezervace));
         return $stmt->fetch();
+    }
+
+
+    function getReservationMeds($idRezervace){
+
     }
 
     //pouzivano
