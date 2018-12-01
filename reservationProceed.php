@@ -38,7 +38,8 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 
 
 	if($anyError === 1){
-		?>
+		echo "chyba";
+	?>
 	<form id="myForm" action="createreserv.php" method="post">
 	<?php
 	    foreach ($_POST as $a => $b) {
@@ -50,6 +51,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 	    document.getElementById('myForm').submit();
 	</script>
 	<?
+	die();
 	}
 
 	$zakaznik = $server->getZakaznik($_POST['RC']);
@@ -69,6 +71,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 	  		  document.getElementById('myForm').submit();
 			</script>
 			<?
+			die();
 		}
 	}
 	else{	//pridame TMP zakaznika do nasi databaze, pokud budeme rusit rezervaci a toto bude jeho jedina, odstranime zakaznika
@@ -80,7 +83,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 	setcookie('tmp_rezervace', $idRezervace, time()+3600*24*7,"/");
 
 }
-
+else{
 
 $id = $server->getMedsID($_POST['lek']);
 echo "$id je id";
@@ -90,6 +93,6 @@ else
 	$server -> insertMeds($id,$idRezervace, $_POST['amount']);
 
 
- redirect('detailReserv.php')
-	
+ redirect('detailReserv.php');
+}
 ?>
