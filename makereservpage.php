@@ -95,7 +95,7 @@ function showMedicine($medicine){
 				<tr>
 					<td>Vyberte pobočku:</td>
 					<td>
-						<input list="pobocka" required="required">
+						<input list="pobocka" name="pobocka" required="required">
 						<datalist id="pobocka">
   							<option value="U Raka">
   							<option value="Španělská">
