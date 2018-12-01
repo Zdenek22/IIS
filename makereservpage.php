@@ -65,6 +65,9 @@ function showMedicine($medicine){
 		</div>	
 		<form action="reservationProceed.php" method="post">
 			<div class="userForm" style="float: left">
+			<?php
+				if(!(isset($_COOKIE['tmp_rezervace']))){
+					?>
 				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 
@@ -85,8 +88,12 @@ function showMedicine($medicine){
 						<td><span class="formDesc">Pojišťovna</span></td>
 						<td><input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required"></td>
 					</tr>
-				</table>	
+				</table>
+				<?php
+				}	
+				?>
 			</div>
+			
 			<table class="amount">
 				<tr>
 					<td>Množství léku (ks):</td>
@@ -105,8 +112,17 @@ function showMedicine($medicine){
   					</td>
 				</tr>
 			</table>
-			<div class="reservMedButtons">
-				<input class="resButt" type="submit" name="rezervovat" value="Rezervovat">
+			<?php
+			if(isset($_COOKIE['tmp_rezervace'])){
+				?>
+				<div class="reservMedButtons" style="width: 100%;">
+				<?php
+			}
+			else{?>
+				<div class="reservMedButtons">
+				<?php
+			}?>
+				<input class="resButt" type="submit" name="rezervovat" value="Rezervovat" >
 			</div>
 		</form>
 		<form action="main.php">
