@@ -34,4 +34,18 @@ if(isset($_GET['sub'])){
 	}
 }
 
+if(isset($_GET['saveReserv'])){
+    if(isset($_COOKIE['tmp_rezervace']))
+         setcookie('tmp_rezervace', 0, time()-3,"/");
+
+    if(isset($_COOKIE['tmp_zakaznik']))
+         setcookie('tmp_zakaznik', 0, time()-3,"/");
+     redirect('main.php');
+}
+
+
+if(isset($_GET['cancelReserv'])){
+	deleteTmp();
+	redirect('main.php');
+}
 ?>
