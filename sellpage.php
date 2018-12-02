@@ -116,7 +116,7 @@ function overview($info){
 }
 
 
-function overviewReserv($count, $info, $zakaznik, $pobocka){
+function overviewReserv($count, $info, $zakaznik, $pobocka, $num){
 	// 'lek' - jmeno leku, 'rezervace' -> prispevek na lek, 'neslevnenaCena'->cena za kus, 'pocet' -> mnozstvi leku, 
 	// 'celkemBezSlevy' -> pobocka celkem, 'celkemSeSlevou'
 	?>
@@ -158,11 +158,15 @@ function overviewReserv($count, $info, $zakaznik, $pobocka){
 		</tr>
 		<tr>
 			<td class="otd">
-				<input class="cancelButtTemp" type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
+				<form action="main.php">
+					<input class="cancelButtTemp" type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
+				</form>
 			</td>
 			<td>
-				<input type="hidden" name="pocet" value="">
-				<input class="finishBut" type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
+				<form action="operations.php" method="get">
+					<input type="hidden" name="cislo" value=<?echo '"';echo $num;echo '"';?>>
+					<input class="finishBut" type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
+				</form>
 			</td>
 		</tr>
 		</table>
