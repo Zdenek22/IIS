@@ -116,7 +116,7 @@ function fillEmployeeAgain($employee, $errormsg, $count){
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Heslo zaměstnance:</td>
-					<td style="text-align: left;"><input type="password" name="heslo" required="required" placeholder="xlogin" value=<?echo '"';echo $employee['heslo'];echo '"';?>></td>
+					<td style="text-align: left;"><input type="password" name="heslo" required="required" placeholder="xlogin"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Jméno zaměstnance:</td>
