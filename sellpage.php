@@ -96,17 +96,17 @@ function overview($info){
 			<tr>
 				<td class="otd">
 					<form action="main.php">
-						<input type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
+						<input class="cancelButtTemp" type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
 					</form>
 				</td>
-				<td>
+				<td class="mtd">
 					<form action="operations.php" method="post">
 						<input type="hidden" name="lek" value=<?echo '"';echo $info['jmeno'];echo '"';?>>
 						<input type="hidden" name="celkem" value=<?echo '"';echo $bezslevy;echo '"';?>>
 						<input type="hidden" name="RC" value=<?echo '"';echo $info['RC'];echo '"';?>>
 						<input type="hidden" name="pocet" value=<?echo '"';echo $info['pocet'];echo '"';?>>
-						<input type="hidden" name="pojistovna" value=value=<?echo '"';echo $info['pocet'];echo '"';?>>
-						<input type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
+						<input type="hidden" name="pojistovna" value=<?echo '"';echo $info['pojistovna'];echo '"';?>>
+						<input class="finishBut" type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
 					</form>
 				</td>
 			</tr>
@@ -158,11 +158,11 @@ function overviewReserv($count, $info, $zakaznik, $pobocka){
 		</tr>
 		<tr>
 			<td class="otd">
-				<input type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
+				<input class="cancelButtTemp" type="submit" name="cancel" value="Storno" style="background-color: red;color: white;">
 			</td>
 			<td>
 				<input type="hidden" name="pocet" value="">
-				<input type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
+				<input class="finishBut" type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
 			</td>
 		</tr>
 		</table>
