@@ -67,14 +67,23 @@ function mainPageButtons(){
 			// pokud je spravce
 			if($user['postaveni'] == 1){
 				?>
-				<form >
-					<button style="margin-top: 100px;" class="menuButtons" type="submit">Spravce 1</button>	
+				<form action="addEmployee.php" method="get">
+					<button style="margin-top: 100px;" class="menuButtons" type="submit">Přidat zaměstnance</button>	
 				</form>
-				<form>
-					<button class="menuButtons" type="submit">Spravce do</button>	
+				<form action="removeEmployee.php" method="get">
+					<button class="menuButtons" type="submit">Odebrat zaměstnance</button>	
 				</form>
-				<form>
-					<button class="menuButtons" type="submit">Spravce lele</button>
+				<form action="addMed.php">
+					<button class="menuButtons" type="submit">Přidat nový lék</button>
+				</form>
+				<form action="removeMed.php">
+					<button class="menuButtons" type="submit">Odebrat lék</button>
+				</form>
+				<form action="addPobocka.php">
+					<button class="menuButtons" type="submit">Přidat pobočku</button>
+				</form>
+				<form action="removePobocka.php">
+					<button class="menuButtons" type="submit">Odebrat pobočku</button>
 				</form>
 				<?php
 			}
