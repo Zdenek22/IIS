@@ -34,7 +34,7 @@ mainPageButtons();
 
 
 
-endTable();
+endTable(0);
 userAccountInfo();
 endReservDetailPage();
 ?>
