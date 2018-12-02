@@ -44,11 +44,12 @@ function overview($info){
 	if($info['predpis'] == '1'){
 		$sleva = $info['sleva'];
 		$RC = $info['RC'];
-		$pojistovana = $info['pojistovna'];
+		$pojistovna = $info['pojistovna'];
 		$predpis = 1;
 	}	
 
 	$celkem = 0;
+	$bezslevy = $pocet * $kus;
 	if($predpis == 1){
 		$celkem = ($pocet * $kus) - ($pocet * $sleva);
 	}	
@@ -101,6 +102,7 @@ function overview($info){
 				<td>
 					<form action="operations.php" method="post">
 						<input type="hidden" name="lek" value=<?echo '"';echo $info['jmeno'];echo '"';?>>
+						<input type="hidden" name="celkem" value=<?echo '"';echo $bezslevy;echo '"';?>>
 						<input type="hidden" name="RC" value=<?echo '"';echo $info['RC'];echo '"';?>>
 						<input type="hidden" name="pocet" value=<?echo '"';echo $info['pocet'];echo '"';?>>
 						<input type="hidden" name="pojistovna" value=value=<?echo '"';echo $info['pocet'];echo '"';?>>
