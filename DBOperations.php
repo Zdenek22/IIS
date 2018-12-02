@@ -276,6 +276,26 @@ class Database_access
         $stmt->execute(array($result,$kam));
     }
 
+    function getAllPobocka(){
+        $stmt = $this->pdo->prepare('SELECT jmeno FROM pobocka');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
+    }
+
+    function getAllPojistovna(){
+        $stmt = $this->pdo->prepare('SELECT jmeno FROM pojistovna');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
+    }
+
+    function getWealth($koho){
+        $stmt = $this->pdo->prepare('SELECT Penize FROM pobocka WHERE id = ?');
+        $stmt->execute(array($koho));
+        $res = $stmt->fetch();
+        return $res['Penize'];
+    }
+
+
     function rmvMed($kde, $co, $kolik){
         $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE pobocka = ? AND lek = ?');
         $stmt->execute(array($kde, $co));
@@ -284,7 +304,6 @@ class Database_access
         $result -= $kolik;
         $stmt = $this->pdo->prepare('UPDATE skladem SET pocet = ? WHERE pobocka = ? AND lek = ?');
         $stmt->execute(array($result,$kde,$co));
-
     }
 
     function addPerson($data)

@@ -113,7 +113,7 @@ if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
 		
 		makeSellPage();
 		mainPageButtons();
-		overviewReserv(count($rezervuje),$rezervuje,$ZAKAZNIK_CELKEM,$POBOCKA_CELKEM); //$cout,$rezervace -> [], $zakaznik
+		overviewReserv(count($rezervuje),$rezervuje,$ZAKAZNIK_CELKEM,$POBOCKA_CELKEM, $_GET['id']); //$cout,$rezervace -> [], $zakaznik
 		userAccountInfo();
 		endSellPage();
 }
@@ -252,11 +252,27 @@ if(isset($_POST['finish'])){
 	if(isset($_POST['RC'])){
 		$idPojistovny= $server->getPojistovna($_POST['pojistovna']);
 		$idPojistovny = $idPojistovny['id'];
-		//echo "tady sem $_SESSION[user],$idLek, $_POST[RC], $idPojistovny, $_POST[pocet]";
 		$server->addTransaction($_SESSION['user'],$idLek, $_POST['RC'], $idPojistovny, $_POST['pocet']);
 	}
 
 	redirect('main.php');
 
+}
+
+if(isset($_GET['finish'])){
+	echo "Processing...";
+	$server->addMoney($_SESSION['pobocka'], $_GET['penez']);
+	$rezervace = $server->getReservation($_GET['cislo']);
+	$leky = $server->getReservationMeds($rezervace['id']);
+
+	foreach ($leky as $key => $value) {
+		$server->rmvMed($_SESSION['pobocka'], $value['lek'] ,$value['pocet']);
+		$idPojistovny= $server->getPojistovna($rezervace['pojistovna']);
+		$idPojistovny = $idPojistovny['id'];
+		$server->addTransaction($_SESSION['user'],$value['lek'], $rezervace['RC'], $idPojistovny, $value['pocet']);
+		sleep(1);
+	}
+	$server->eraseReservation($rezervace['id'], $_SESSION['user']);
+	redirect('main.php');
 }
 ?>
