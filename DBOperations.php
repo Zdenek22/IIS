@@ -261,6 +261,16 @@ class Database_access
         $stmt->execute(array($RC));
     }
 
+    function addMoney($kam, $kolik){
+        $stmt = $this->pdo->prepare('SELECT Penize FROM pobocka WHERE id = ?');
+        $stmt->execute(array($kam));
+        $result = $stmt->fetch();
+        $result = $result['Penize'];
+        echo "$result je penez";
+        //$stmt = $this->pdo->prepare('INSERT INTO users (name, surname) VALUES (:name, :surname)');
+        //$stmt->execute($data);
+    }
+
     function addPerson($data)
     {
         $stmt = $this->pdo->prepare('INSERT INTO users (name, surname) VALUES (:name, :surname)');
