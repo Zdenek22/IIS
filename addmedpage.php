@@ -42,11 +42,7 @@ function addMedForm(){
 		<form action="" method="" id="medform">
 			<table style="width: 100%;border: 1px solid #ccc;border-bottom: 0px;">
 				<tr>
-					<td style="width: 20%;">*ID léku:</td>
-					<td style="text-align: left;"><input type="text" name="id" required="required" placeholder="Lek4"></td>
-				</tr>
-				<tr>
-					<td style="width: 20%;">Jméno léku:</td>
+					<td style="width: 20%;">*Jméno léku:</td>
 					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Indulona"></td>
 				</tr>
 				<tr>
@@ -56,16 +52,6 @@ function addMedForm(){
 				<tr>
 					<td style="width: 20%;">Počáteční množství:</td>
 					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" placeholder="42"></td>
-				</tr>
-				<tr>
-					<td style="width: 20%;">*Pobočka, na které lék bude:</td>
-					<td style="text-align: left;"><input list="pobocka" name="pobocka" required="required">
-						<datalist id="pobocka">
-  							<option value="U Raka">
-  							<option value="Španělská">
-  							<option value="U Černé bobule">
-  							<option value="Babiččina lékárna">
-						</datalist></td>
 				</tr>
 			</table>
 		</form>
