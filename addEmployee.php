@@ -18,14 +18,23 @@ if(isset($_POST['login'])){
 	$errorMsg[0] = "";
 	$count = 0;
 
-	$fill['heslo'] = $_POST['heslo'];
 	$fill['login'] = $_POST['login'];
 	$fill['jmeno'] = $_POST['jmeno'];
+	if(isset($_POST['telefon'])){
+		$fill['telefon'] = $_POST['telefon'];
+	}
+	else{
+		$fill['telefon'] = "";
+	}
+	if(isset($_POST['email'])){
+		$fill['email'] = $_POST['email'];		
+	}
+	else{
+		$fill['email'] = "";
+	}
+
 	$fill['prijmeni'] = $_POST['prijmeni'];
-	$fill['telefon'] = $_POST['telefon'];
-	$fill['email'] = $_POST['email'];
 	$fill['pobocka'] = $_POST['pobocka'];
-	$fill['postaveni'] = $_POST['postaveni'];
 
 	if($_POST['login'] == '0'){
 		$fill = "";
