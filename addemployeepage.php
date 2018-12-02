@@ -46,30 +46,37 @@ function addEmployeeForm(){
 					<td style="text-align: left;"><input type="text" name="login" required="required" placeholder="xlogin"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Jméno zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Jméno"></td>
+					<td style="width: 20%;">*Jméno zaměstnance:</td>
+					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Jméno" required="required"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Příjmení zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="prijmeni" placeholder="Příjmení"></td>
+					<td style="width: 20%;">*Příjmení zaměstnance:</td>
+					<td style="text-align: left;"><input type="text" name="prijmeni" placeholder="Příjmení" required="required"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Telefon zaměstnance:</td>
+					<td style="width: 20%;"> Telefon zaměstnance:</td>
 					<td style="text-align: left;" style="text-align: left;"><input type="tel" name="telefon" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="909090909"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Email zaměstnance:</td>
+					<td style="width: 20%;"> Email zaměstnance:</td>
 					<td style="text-align: left;"><input type="email" name="email" placeholder="xlogin@gmail.com"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Pobočka, na které bude pracovat:</td>
-					<td style="text-align: left;"><input list="pobocka" name="pobocka" required="required">
-						<datalist id="pobocka">
-  							<option value="U Raka">
-  							<option value="Španělská">
-  							<option value="U Černé bobule">
-  							<option value="Babiččina lékárna">
-						</datalist></td>
+					<td style="text-align: left;"><select list="pobocka" name="pobocka" required="required" style="width: 20%;">
+						<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPobocka();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
+							</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;"></td>

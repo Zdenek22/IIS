@@ -43,21 +43,21 @@ function addMedForm(){
 			<table style="width: 100%;border: 1px solid #ccc;border-bottom: 0px;">
 				<tr>
 					<td style="width: 20%;">*Jméno léku:</td>
-					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Indulona"></td>
+					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Indulona" required="required"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Cena (Kč):</td>
-					<td style="text-align: left;"><input type="number" name="cena" placeholder="42"></td>
+					<td style="width: 20%;">*Cena (Kč):</td>
+					<td style="text-align: left;"><input type="number" name="cena" placeholder="42" required="required"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Počáteční množství:</td>
-					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" placeholder="42"></td>
+					<td style="width: 20%;">*Počáteční množství:</td>
+					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" placeholder="42" required="required"></td>
 				</tr>
 			</table>
 		</form>
 		<table style="width: 100%;border: 1px solid #ccc;border-top: 0px;">
 			<tr>
-				<td style="width: 20%;">Popis léku:</td>
+				<td style="width: 20%;"> Popis léku:</td>
 				<td style="text-align: left;"><textarea name="popis" form="medform" placeholder="Zadej popis..."></textarea></td>
 			</tr>
 			<tr>
