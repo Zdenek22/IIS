@@ -78,6 +78,9 @@ function addMedForm(){
 				<td style="width: 20%;"></td>
 				<td style="text-align: center;"><input form="medform" type="submit" name="add" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
 			</tr>
+				<tr>
+					<td style="width: 20%">* - pole je povinné</td>
+				</tr>
 		</table>	
 	</div>
 	<?php
