@@ -125,6 +125,8 @@ function Again($fill){
 				</tr>
 		</table>
 		</form>	
+		<br>
+		<div style="float: left;">Zadaný lék již existuje!</div>
 	</div>
 
 
