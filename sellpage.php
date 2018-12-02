@@ -164,6 +164,7 @@ function overviewReserv($count, $info, $zakaznik, $pobocka, $num){
 			</td>
 			<td>
 				<form action="operations.php" method="get">
+					<input type="hidden" name="penez" value=<?echo '"';echo $pobocka;echo '"';?>>
 					<input type="hidden" name="cislo" value=<?echo '"';echo $num;echo '"';?>>
 					<input class="finishBut" type="submit" name="finish" value="Dokončit" style="background-color: #4CAF50;color: white;">
 				</form>
