@@ -39,15 +39,35 @@ function makeAddPobockaPage(){
 function addPobockaForm(){
 	?>
 	<div class="secondCol">
-		<form action="" method="">
+		<form action="operations.php" method="post">
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Jméno pobočky:</td>
-					<td style="text-align: left;"><input type="text" name="id" required="required"></td>
+					<td style="text-align: left;"><input type="text" required="required" name="jmeno" placeholder="Pobočka"></td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">*Město:</td>
+					<td style="text-align: left;"><input type="text" required="required" name="mesto" placeholder="Město"></td>
+				</tr>
+				<tr>
+					<td style="width: 20%;"> Ulice:</td>
+					<td style="text-align: left;"><input type="text" name="ulice" placeholder="Ulice"></td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">*Číslo domu:</td>
+					<td style="text-align: left;"><input type="num" required="required" name="cislo" min="1" placeholder="1"></td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">*PSČ:</td>
+					<td style="text-align: left;"><input type="num" required="required" name="psc" placeholder="66666" pattern="[0-9]{5}"></td>
+				</tr>
+				<tr>
+					<td style="width: 20%;">*Peníze na pobočce:</td>
+					<td style="text-align: left;"><input type="num" required="required" name="penize" min="1"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;"></td>
-					<td style="text-align: center;"><input form="medform" type="submit" name="add" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;" required="required"></td>
+					<td style="text-align: center;"><input form="medform" type="submit" name="addPobocka" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%">* - pole je povinné</td>
