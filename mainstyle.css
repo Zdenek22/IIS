@@ -420,3 +420,19 @@ body{
 	margin-top: 25px;
 	margin-left: 10px;
 }
+
+.overviewTable{
+	width: 100%;
+	border: 1px solid #ccc;
+}
+
+.overviewTable tr .otd{
+	text-align: left;
+	width: 30%;
+	padding-left: 15%;
+}
+
+.overviewTable tr .mtd{
+	text-align: left;
+	width: 70%;
+}
