@@ -98,7 +98,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 }
 
 echo "jsem volan";
-$id = $server->getMedsID($_POST['lek']);
+$id = $_POST['lek'];
 //echo "$id je id";
 if(isset($_COOKIE['tmp_rezervace']))
 	$server -> insertMeds($id,$_COOKIE['tmp_rezervace'] , $_POST['amount']);
