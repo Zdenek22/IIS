@@ -47,8 +47,9 @@ function amountToSell($medicine){
 	else{
 		$predpis = "Ne";
 		$tmp = 0;
-	}	
-
+	}
+	$server = new Database_access();	
+	$id = $server->getMedsID($medicine['jmeno']);
 	$popis = "";
 	if(isset($medicine['popis']))
 		$popis = $medicine['popis'];		
@@ -74,7 +75,7 @@ function amountToSell($medicine){
 			?>
 			<form action="operations.php" method="post">
 				<div class="userForm" style="float: left">
-					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 					<input type="hidden" name="predpis" value=<?echo '"';echo $tmp;echo '"';?>>
 					<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 					<table style="float: left;">
@@ -120,7 +121,7 @@ function amountToSell($medicine){
 		else{
 			?>
 			<form action="operations.php" method="post">
-				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 				<input type="hidden" name="predpis" value=<?echo '"';echo $tmp;echo '"';?>>
 				<div class="sellAmount">
 					<span class="amountDesc">Množství léku (ks):</span>
