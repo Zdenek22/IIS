@@ -150,9 +150,34 @@ class Database_access
         return $stmt->fetch();
     }
 
+    function getPlainReservation($idRezervace)
+    { 
+        $stmt = $this->pdo->prepare('SELECT id, vytvoril, pojistovna, RC, pobocka  FROM rezervace WHERE id = ?');
+        $stmt->execute(array($idRezervace));
+        return $stmt->fetch();
+    }
+
+    function getPrispevek($idPojistovny, $idleku){
+        $stmt = $this->pdo->prepare('SELECT kolik  FROM prispiva WHERE pojistovna = ? AND lek =?');
+        $stmt->execute(array($idPojistovny, $idleku));
+        $tmp = $stmt->fetch();
+        $tmp = $tmp[0];
+        if(!(isset($tmp)))
+            $tmp = 0;
+        return $tmp;
+    }
 
     function getReservationMeds($idRezervace){
+        $stmt = $this->pdo->prepare('SELECT rezervace, lek, pocet FROM rezervuje WHERE rezervace = ?');
+        $stmt->execute(array($idRezervace));
+        return $stmt->fetchAll();
+    }
 
+    function getSkladem($idprodejny, $idLeku){
+        $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE pobocka = ? AND lek=?');
+        $stmt->execute(array($idprodejny,$idLeku));
+        $res = $stmt->fetch();
+        return $res[0];
     }
 
     //pouzivano

@@ -50,9 +50,69 @@ if(isset($_GET['cancelReserv'])){
 }
 
 if(isset($_GET['reservation']) and $_GET['reservation'] === 'Storno'){
-	echo "$_GET[id]";
 	$server->eraseReservation($_GET['id'], $_SESSION['user']);
 	redirect('reservations.php');
+}
+
+if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
+	$rezervuje = $server->getReservationMeds($_GET['id']);
+	$nedostatek = 0;
+
+		foreach ($rezervuje as $key => $value) {
+			$val=$server->getSkladem($_SESSION['pobocka'], $value['lek']);
+			$rezervuje[$key]['rezervace'] = 0;
+			if(!isset($val) or $val < $value['pocet']){
+				$nedostatek = 1;
+			}
+		}
+
+	if($nedostatek === 1){
+		?>
+		<form id="myForm" action="reservations.php" method="get">
+		<?php
+		        echo '<input type="hidden" name="'."rezervation".'" value="'."0".'">';
+		?>
+		</form>
+		<script type="text/javascript">
+		    document.getElementById('myForm').submit();
+		</script>
+		<?
+		die();
+	}
+
+	//nahradit cisla leku jmenem
+	$rezervace = $server->getPlainReservation($_GET['id']); //pojistovna je [2]
+		//TODO, projit a hledat prispevky
+		foreach ($rezervuje as $key => $value) {
+			$val=$server->getPrispevek($rezervace[2], $value['lek']);
+			$rezervuje[$key]['rezervace'] = $val;
+		}
+
+		//spocitat celkovou cenu pro zakaznika
+		//spocitat celkovou castku pro lekarnu
+		foreach ($rezervuje as $key => $value) {
+			$val=$server->getMedsValue($value['lek']);
+			$rezervuje[$key]['neslevnenaCena'] = $val;
+		}
+
+		foreach ($rezervuje as $key => $value) {
+			echo "neslevnena cena $value[neslevnenaCena]<br>";}
+
+		foreach ($rezervuje as $key => $value) {
+			$rezervuje[$key]['celkemBezSlevy'] = ($rezervuje[$key]['neslevnenaCena'])*($rezervuje[$key]['pocet']);
+			$tmp = $rezervuje[$key]['celkemBezSlevy'];
+			echo "celkem $tmp <br>";}
+
+		foreach ($rezervuje as $key => $value) {
+			$rezervuje[$key]['celkemSeSlevou'] = $rezervuje[$key]['celkemBezSlevy']-($rezervuje[$key]['pocet']*$rezervuje[$key]['rezervace']);
+			$tmp = $rezervuje[$key]['celkemSeSlevou'];
+			echo "celkem se slevou $tmp <br>";}
+
+			//nahradit cisla leku jmenem getMedsName
+			foreach ($rezervuje as $key => $value) {
+			$rezervuje[$key]['lek'] = $server->getMedsName($value['lek']);
+			$tmp = $rezervuje[$key]['lek'];
+			echo "celkem se slevou $tmp <br>";}
 
 }
 ?>
