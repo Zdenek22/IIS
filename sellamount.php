@@ -16,7 +16,7 @@ if(isset($_POST['lek'])){
 	$errorMsg[0] = "";
 	$count = 0;
 	$server = new Database_access();
-	$jmeno = $server->getMedsName($_POST['lek'])
+	$jmeno = $server->getMedsName($_POST['lek']);
 	$medicament = $server->getMedicament($jmeno, $_SESSION['pobocka']);
 
 	if($medicament[0]['predpis'] == '1'){
