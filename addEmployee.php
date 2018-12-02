@@ -37,7 +37,7 @@ if(isset($_POST['login'])){
 	$fill['pobocka'] = $_POST['pobocka'];
 
 	if($_POST['login'] == '0'){
-		$fill = "";
+		$fill['login'] = "";
 		$errorMsg[$count] = "Zadaný login již existuje! Zadejte jiný.";
 		$count = $count + 1;
 	}

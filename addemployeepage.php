@@ -79,7 +79,6 @@ function addEmployeeForm(){
 					<td style="text-align: left;"><select list="pobocka" name="pobocka" required="required" style="width: 20%;">
 						<datalist id="list">
 								<?php
-
 								$server = new Database_access();
 								$pobo = $server->getAllPobocka();
 								foreach ($pobo as $key => $value) {
@@ -105,7 +104,7 @@ function addEmployeeForm(){
 }
 
 
-function fillEmployeeAgain($employee, $errormsg, $count){
+function fillEmployeeAgain($employee, $errorMsg, $count){
 	?>
 	<div class="secondCol">
 		<form action="operations.php" method="post">
@@ -116,7 +115,7 @@ function fillEmployeeAgain($employee, $errormsg, $count){
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Heslo zaměstnance:</td>
-					<td style="text-align: left;"><input type="password" name="heslo" required="required" placeholder="xlogin"></td>
+					<td style="text-align: left;"><input type="password" name="heslo" required="required"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Jméno zaměstnance:</td>
@@ -169,6 +168,18 @@ function fillEmployeeAgain($employee, $errormsg, $count){
 				</tr>
 			</table>
 		</form>	
+		<br>
+
+		<?php
+		foreach ($errorMsg as $key => $value) {
+		?>
+		<div style="float: left;margin: 4px; width: 100%;">
+			<?echo $value;?>
+		<br>
+		</div>
+		<?php
+	}
+	?>
 	</div>
 	<?php
 }
