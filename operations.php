@@ -123,10 +123,12 @@ if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
 
 }
 
-if(isset($_POST['finish'])){
-
+if(isset($_POST['vydat'])){
+echo "ahojky";
+echo "$_POST[amount]";
 	//JE TO NA PREDPIS
-	if($_POST['predpis'] === 1){
+	$prispevek = 0;
+	if($_POST['predpis'] === '1'){
 		echo "na predpis"; 
 
 		$anyError=0;
@@ -191,12 +193,17 @@ if(isset($_POST['finish'])){
 				die();
 			}
 		}
+
+		$idPojistovny = $server->getPojistovna($_POST['pojistovna']);
+		$idPojistovny = $idPojistovny['id'];
+		$idLeku = $server->getMedsID($_POST['lek']);
+		$prispevek =$server->getPrispevek($idPojistovny, $idLeku);
 	}
 
 	//Kontrola, zda je na sklade dost leku
 	$pocet;
 	$skladem = $server->getMedicament($_POST['lek'],$_SESSION['pobocka']);
-	if(isset($skladem[0]['pocet']))
+	if(!isset($skladem[0]['pocet']))
 		$pocet=0;
 	else{
 		$pocet= $skladem[0]['pocet'];
@@ -208,9 +215,8 @@ if(isset($_POST['finish'])){
 			<form id="myForm" action="sellamount.php" method="post">
 			<?php
 		   		foreach ($_POST as $a => $b) {
-		     	   echo '<input type="hidden" name="'.htmlentities($a).'" value="'
-		     	   htmlentities($b).'">';
-		  	 	}
+		     		echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+		  		}
 			?>
 			</form>
 			<script type="text/javascript">
@@ -219,7 +225,7 @@ if(isset($_POST['finish'])){
 			<?
 			die();
 	}
-
+	echo "prispevek je $prispevek";
 
 }
 
