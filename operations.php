@@ -10,7 +10,7 @@ require_once "accountinfo.php";
 
 
 $server = new Database_access();
-
+header("Content-Type: text/html; charset=UTF-8");
 if(isset($_GET['add'])){
 	$id = $server->getMedsID($_GET['lek']);
 	$tmp= $server->addMeds($id, $_SESSION['pobocka'], $_GET['add']);
@@ -152,6 +152,7 @@ if(isset($_POST['vydat'])){
 
 		if($anyError === 1){
 				//echo "chyba";  //TODO KAM PRESMERUJE
+			$_POST['lek'] = $server->getMedsID($_POST['lek']);
 			?>
 			<form id="myForm" action="sellamount.php" method="post">  
 			<?php
