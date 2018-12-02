@@ -40,7 +40,7 @@ function amountToSell($medicine){
 
 	$predpis = -1;
 	$tmp;
-	if($medicine['predpis'] == 1){
+	if($medicine['predpis'] == '1'){
 		$predpis = "Ano";
 		$tmp = 1;
 	}	
@@ -70,9 +70,8 @@ function amountToSell($medicine){
 			</div>
 		</div>
 		<?php
-		if($medicine['predpis'] == 1){
+		if($medicine['predpis'] == '1'){
 			?>
-
 			<form action="operations.php" method="post">
 				<div class="userForm" style="float: left">
 					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
@@ -231,6 +230,8 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 			?>
 			<form action="operations.php" method="post">
 				<div class="sellAmount">
+					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="predpis" value="0">
 					<span class="amountDesc">Množství léku (ks):</span>
 					<input class="numAmount" type="number" name="amount" value="1" min="1">
 					<div class="sellMedButtons">
