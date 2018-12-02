@@ -14,7 +14,7 @@ mainPageButtons();
 if(isset($_POST['lek'])){
 
 	$fill;
-	$errorMsg;
+	$errorMsg[0] = "";
 	$count = 0;
 	$server = new Database_access();
 	$medicament = $server->getMedicament($_POST['lek'], $_SESSION['pobocka']);
@@ -26,7 +26,7 @@ if(isset($_POST['lek'])){
 
 	if($_POST['jmeno'] == '0'){
 		$fill['jmeno'] = "";
-		$errorMsg[$count] = 'Špatný formát jména!';
+		$errorMsg[$count] = "Špatný formát jména!";
 		$count = $count + 1;
 	}
 	if($_POST['prijmeni'] == '0'){
@@ -51,7 +51,7 @@ if(isset($_POST['lek'])){
 		$errorMsg[$count] = "Zadaná pojišťovna neexistuje! Zadejte znovu.";
 		$count = $count + 1;
 	}
-
+	
 	fillSellAgain($fill, $errorMsg, $count, $medicament[0]);
 }
 

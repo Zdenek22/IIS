@@ -39,10 +39,15 @@ function makeSellAmountPage(){
 function amountToSell($medicine){
 
 	$predpis = -1;
-	if($medicine['predpis'] == 1)
+	$tmp;
+	if($medicine['predpis'] == 1){
 		$predpis = "Ano";
-	else
+		$tmp = 1;
+	}	
+	else{
 		$predpis = "Ne";
+		$tmp = 0;
+	}	
 
 	$popis = "";
 	if(isset($medicine['popis']))
@@ -71,6 +76,7 @@ function amountToSell($medicine){
 			<form action="operations.php" method="post">
 				<div class="userForm" style="float: left">
 					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="predpis" value=<?echo '"';echo $tmp;echo '"';?>>
 					<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 					<table style="float: left;">
 					<tr>
@@ -116,6 +122,7 @@ function amountToSell($medicine){
 			?>
 			<form action="operations.php" method="post">
 				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="predpis" value=<?echo '"';echo $tmp;echo '"';?>>
 				<div class="sellAmount">
 					<span class="amountDesc">Množství léku (ks):</span>
 					<input class="numAmount" type="number" name="amount" value="1" min="1">
@@ -175,8 +182,10 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 		if($medicine['predpis'] == 1){
 			?>
 
-			<form>
+			<form action="operations.php" method="post">
 				<div class="userForm" style="float: left">
+					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="predpis" value="1">
 					<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 					<table style="float: left;">
 					<tr>
@@ -208,19 +217,19 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 				</div>
 			</form>	
 			<form action="main.php">
-			<table class="helpTable">
-				<tr>
-					<td style="width: 80%;"></td>
-					<td><input class="cancButt" type="submit" name="zrusit" value="Zrušit"><td>
-				</tr>	
-			</table>			
-		</form>
+				<table class="helpTable">
+					<tr>
+						<td style="width: 80%;"></td>
+						<td><input class="cancButt" type="submit" name="zrusit" value="Zrušit"><td>
+					</tr>	
+				</table>			
+			</form>
 		
 		<?php
 		}
 		else{
 			?>
-			<form>
+			<form action="operations.php" method="post">
 				<div class="sellAmount">
 					<span class="amountDesc">Množství léku (ks):</span>
 					<input class="numAmount" type="number" name="amount" value="1" min="1">
@@ -247,7 +256,7 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 		<?php
 	}
 	?>
-		?>			
+	</div>		
 	<?php			
 }
 
