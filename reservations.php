@@ -21,8 +21,10 @@ else{
 }
 
 vypisRezervace($_SESSION['pobocka'], $jmeno);
-
-endTable();
+if(isset($_GET['rezervation']))
+	endTable("Chybí dostatečné množství medikamentů na prodejně.");
+else
+	endTable();
 reservFindBar();
 userInfo($_SESSION['user']);
 endReservPage();

@@ -36,7 +36,7 @@ foreach($medicaments as $key => $value){
 
 
 
-endTable();
+endTable(0);
 mainFindBar();
 userInfo($_SESSION['user']);
 endMainPage();
