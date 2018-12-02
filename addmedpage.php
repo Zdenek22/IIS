@@ -23,7 +23,7 @@ function makeAddMedPage(){
 	<head>
    	 <link rel="stylesheet" type="text/css" href="mainstyle.css">
    	 <link rel="icon" type="image/x-icon" href="snake.png">
-   	 <title>Lékárna - přidat zaměstnance</title>
+   	 <title>Lékárna - přidat lék</title>
 	</head>
 	<body>
 	<?php
