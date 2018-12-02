@@ -238,6 +238,11 @@ class Database_access
         $stmt->execute(array($kdo, $co, $komu, $pojistovna, $kolik));
     }
 
+    function addWorker($login, $heslo, $jmeno, $prijmeni, $telefon, $email, $pobocka, $postaveni){
+        $stmt = $this->pdo->prepare("INSERT INTO uzivatel (login, heslo, jmeno, prijmeni, telefon, email, pobocka, postaveni) VALUES(?,?,?,?,?,?,?,?)");
+        $stmt->execute(array($login, $heslo, $jmeno, $prijmeni, $telefon, $email, $pobocka, $postaveni));
+    }
+
     //na zaklade LOGIN vypise OSOBNI UDAJE
     function getInformation($id)
     {

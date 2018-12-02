@@ -276,4 +276,57 @@ if(isset($_GET['finish'])){
 	$server->eraseReservation($rezervace['id'], $_SESSION['user']);
 	redirect('main.php');
 }
+
+if(isset($_POST['addEmp'])){
+
+			$anyError=0;
+
+		if (preg_match('#[0-9]#',$_POST['jmeno'])){
+			$_POST['jmeno']=0;
+			$anyError = 1;
+		}
+
+		if (preg_match('#[0-9]#',$_POST['prijmeni'])){
+			$_POST['prijmeni']=0;
+			$anyError = 1;
+		}
+		echo "$_POST[login]";
+		$avalibility = $server->getInformation($_POST['login']);
+
+		if(!empty($avalibility[0])){
+			$_POST['login']=0;
+			$anyError = 1;
+		}
+		echo "$_POST[jmeno], $_POST[prijmeni], ";
+		if($anyError === 1){
+			?>
+			<form id="myForm" action="addEmployee.php" method="post">  
+			<?php
+			    foreach ($_POST as $a => $b) {
+			        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+			    }
+			?>
+			</form>
+			<script type="text/javascript">
+			    document.getElementById('myForm').submit();
+			</script>
+			<?
+			die();
+		}
+
+		//pridat zamestnance
+		$idPobocky = $server->getPobockaID($_POST['pobocka']);
+		$postaveni = $_POST['postaveni'];
+
+		echo "$_POST[telefon]  $_POST[email]";
+
+		if(!empty($_POST['telefon']))
+			$telefon = $_POST['telefon'];
+
+		if(!empty($_POST['email']))
+			$email = $_POST['email'];		
+
+		$server->addWorker($_POST['login'], $_POST['heslo'], $_POST['jmeno'], $_POST['prijmeni'], $telefon, $email, $idPobocky, $_POST['postaveni']);
+}
+
 ?>
