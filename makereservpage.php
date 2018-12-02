@@ -86,7 +86,20 @@ function showMedicine($medicine){
 					</tr>
 					<tr>
 						<td><span class="formDesc">Pojišťovna</span></td>
-						<td><input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required"></td>
+						<td><select class="userInput" list="list" name="pojistovna" placeholder="Pojišťovna" required="required" style="width: 80%;">
+							<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPojistovna();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option style="width: 70%;"><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
+						</td>
 					</tr>
 				</table>
 				<?php
@@ -105,13 +118,19 @@ function showMedicine($medicine){
 				<tr>
 					<td>Vyberte pobočku:</td>
 					<td>
-						<input list="pobocka" name="pobocka" required="required">
-						<datalist id="pobocka">
-  							<option value="U Raka">
-  							<option value="Španělská">
-  							<option value="U Černé bobule">
-  							<option value="Babiččina lékárna">
-						</datalist>
+						<select list="pobocka" name="pobocka" required="required" style="width: 100%;">
+						<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPobocka();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
   					</td>
 				</tr>
 				<?php
@@ -162,7 +181,9 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 
 	$popis = "";
 	if(isset($medicine['popis']))
-		$popis = $medicine['popis'];		
+		$popis = $medicine['popis'];
+	else
+		$popis = "";			
 	?>	
 	<div class="secondCol">
 		<div class="medicineInfo">
@@ -200,7 +221,20 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 					</tr>
 					<tr>
 						<td><span class="formDesc">Pojišťovna</span></td>
-						<td><input class="userInput" type="text" name="pojistovna" value=<?echo '"';echo $fill['pojistovna'];echo '"';?> required="required"></td>
+						<td><select class="userInput" list="list" name="pojistovna" required="required" style="width: 90%;">
+						<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPojistovna();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
+						</td>
 					</tr>
 				</table>	
 			</div>
@@ -212,13 +246,19 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 				<tr>
 					<td>Vyberte pobočku:</td>
 					<td>
-						<input list="pobocka" name="pobocka" required="required">
+						<select list="pobocka" name="pobocka" required="required" style="width: 100%;">
 						<datalist id="pobocka">
-  							<option value="U Raka">
-  							<option value="Španělská">
-  							<option value="U Černé bobule">
-  							<option value="Babiččina lékárna">
-						</datalist>
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPobocka();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
   					</td>
 				</tr>
 			</table>
