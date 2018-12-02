@@ -9,7 +9,7 @@ $server = new Database_access();
 //echo "lek je $_POST[lek], mnozstvi je $_POST[amount]";
 $idRezervace;
 if(!(isset($_COOKIE['tmp_rezervace']))){
-	echo "susa neni nastavena<br>";
+	//echo "susa neni nastavena<br>";
 	$zalohaPOST=$_POST;
 	$anyError=0;
 
@@ -36,7 +36,7 @@ if(!(isset($_COOKIE['tmp_rezervace']))){
 		$anyError = 1;
 	}
 
-echo "je to $_POST[pobocka]";
+//echo "je to $_POST[pobocka]";
 	$pobocka=$server->getPobockaID($_POST['pobocka']);
 	if(empty($pobocka)){
 		$_POST['pobocka']=0;
@@ -45,7 +45,11 @@ echo "je to $_POST[pobocka]";
 
 	if($anyError === 1){
 		//echo "chyba";
+	header("Content-Type: text/html; charset=UTF-8");
 	?>
+	
+	<!DOCTYPE html>
+		<html lang="cz">
 	<form id="myForm" action="createreserv.php" method="post">
 	<?php
 	    foreach ($_POST as $a => $b) {
@@ -65,7 +69,10 @@ echo "je to $_POST[pobocka]";
 	if(!(empty($zakaznik))){
 		if($zakaznik['jmeno']!=$_POST['jmeno'] or $zakaznik['prijmeni']!=$_POST['prijmeni']){
 			$_POST['RC']=1;
+			header("Content-Type: text/html; charset=UTF-8");
 			?>
+			<!DOCTYPE html>
+		<html lang="cz">
 			<form id="myForm" action="createreserv.php" method="post">
 			<?php
 	   			foreach ($_POST as $a => $b) {
@@ -90,7 +97,7 @@ echo "je to $_POST[pobocka]";
 
 }
 
-
+echo "jsem volan";
 $id = $server->getMedsID($_POST['lek']);
 //echo "$id je id";
 if(isset($_COOKIE['tmp_rezervace']))
