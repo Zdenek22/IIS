@@ -150,11 +150,11 @@ function overviewReserv($count, $info, $zakaznik, $pobocka){
 		?>
 		<tr>
 			<td class="otd">Cena celkem bez slevy:</td>
-			<td class="mtd"><?echo $pobocka['celkemBezSlevy'];?> Kč</td>
+			<td class="mtd"><?echo $pobocka;?> Kč</td>
 		</tr>
 		<tr>
 			<td class="otd">Cena celkem se slevou:</td>
-			<td class="mtd"><?echo $zakaznik['celkemSeSlevou'];?> Kč</td>
+			<td class="mtd"><?echo $zakaznik;?> Kč</td>
 		</tr>
 		<tr>
 			<td class="otd">
