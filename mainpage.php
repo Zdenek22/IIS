@@ -147,10 +147,12 @@ function endTable($msg){
 			</tr>	<!-- konec radku tabulky -->
 		</table>	<!-- konec tabulky -->
 		<?php 
-			if(!($msg == 0)){
+			if(!($msg === 0)){
 				?>
+				<br>
 				<div style="float: left;"><?echo $msg;?></div>
-			}
+				<?php
+			}	
 		?>
 	</div>			<!-- konec secondCol -->
 	<?php	
