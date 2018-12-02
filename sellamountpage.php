@@ -114,7 +114,8 @@ function amountToSell($medicine){
 		}
 		else{
 			?>
-			<form>
+			<form action="operations.php" method="post">
+				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
 				<div class="sellAmount">
 					<span class="amountDesc">Množství léku (ks):</span>
 					<input class="numAmount" type="number" name="amount" value="1" min="1">
