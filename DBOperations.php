@@ -232,6 +232,11 @@ class Database_access
         return $result['id'];
     }
 
+    function addTransaction($kdo, $co, $komu, $pojistovna, $kolik){
+        //echo "$kdo, $co, $komu, $pojistovna, $kolik";
+        $stmt = $this->pdo->prepare("INSERT INTO prodal (kdo, co, komu, pojistovna, kolik) VALUES(?,?,?,?,?)");
+        $stmt->execute(array($kdo, $co, $komu, $pojistovna, $kolik));
+    }
 
     //na zaklade LOGIN vypise OSOBNI UDAJE
     function getInformation($id)
@@ -266,9 +271,20 @@ class Database_access
         $stmt->execute(array($kam));
         $result = $stmt->fetch();
         $result = $result['Penize'];
-        echo "$result je penez";
-        //$stmt = $this->pdo->prepare('INSERT INTO users (name, surname) VALUES (:name, :surname)');
-        //$stmt->execute($data);
+        $result += $kolik;
+        $stmt = $this->pdo->prepare('UPDATE pobocka SET Penize = ? WHERE id = ?');
+        $stmt->execute(array($result,$kam));
+    }
+
+    function rmvMed($kde, $co, $kolik){
+        $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE pobocka = ? AND lek = ?');
+        $stmt->execute(array($kde, $co));
+        $result = $stmt->fetch();
+        $result = $result['pocet'];
+        $result -= $kolik;
+        $stmt = $this->pdo->prepare('UPDATE skladem SET pocet = ? WHERE pobocka = ? AND lek = ?');
+        $stmt->execute(array($result,$kde,$co));
+
     }
 
     function addPerson($data)

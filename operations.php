@@ -244,5 +244,23 @@ echo "$_POST[amount]";
 }
 
 
-//if(isset($_POST['vydat'])){
+if(isset($_POST['finish'])){
+
+	echo "Jdeme do finale";
+	foreach ($_POST as $key => $value) {
+		echo "$key je $value <br>";
+	}
+	$server->addMoney($_SESSION['pobocka'], $_POST['celkem']);
+	$idLek = $server->getMedsID($_POST['lek']);
+	$server->rmvMed($_SESSION['pobocka'], $idLek ,$_POST['pocet']);
+
+	if(isset($_POST['RC'])){
+		$idPojistovny= $server->getPojistovna($_POST['pojistovna']);
+		$idPojistovny = $idPojistovny['id'];
+		$server->addTransaction($_SESSION['user'],$idLek, $_POST['RC'], $idPojistovny, $_POST['pocet']);
+	}
+
+	redirect('main.php');
+
+}
 ?>
