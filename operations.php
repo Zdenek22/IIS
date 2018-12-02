@@ -327,6 +327,15 @@ if(isset($_POST['addEmp'])){
 			$email = $_POST['email'];		
 
 		$server->addWorker($_POST['login'], $_POST['heslo'], $_POST['jmeno'], $_POST['prijmeni'], $telefon, $email, $idPobocky, $_POST['postaveni']);
+		redirect('addEmployee.php');
+}
+
+if(isset($_POST['addMed'])){
+		//pridat zamestnance
+
+		echo "$_POST[jmeno],  $_POST[cena], $_POST[amount],  $_POST[popis], $_POST[predpis]";
+
+		addMed($jmeno, $cena, $predpis, $popis);
 }
 
 ?>

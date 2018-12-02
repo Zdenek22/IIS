@@ -243,6 +243,11 @@ class Database_access
         $stmt->execute(array($login, $heslo, $jmeno, $prijmeni, $telefon, $email, $pobocka, $postaveni));
     }
 
+    function addMed($jmeno, $cena, $predpis, $popis){
+        $stmt = $this->pdo->prepare("INSERT INTO lek (jmeno, cena, predpis, popis) VALUES(?,?,?,?)");
+        $stmt->execute(array($jmeno, $cena, $predpis, $popis));
+    }
+
     //na zaklade LOGIN vypise OSOBNI UDAJE
     function getInformation($id)
     {
