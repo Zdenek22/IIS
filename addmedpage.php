@@ -51,7 +51,7 @@ function addMedForm(){
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Počáteční množství:</td>
-					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" required="required" placeholder="42" min="0"></td>
+					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" required="required" value="1" min="0"></td>
 				</tr>
 			</table>
 		<table style="width: 100%;border: 1px solid #ccc;border-top: 0px;">
