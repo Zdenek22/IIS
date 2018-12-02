@@ -39,7 +39,7 @@ function makeAddEmployeePage(){
 function addEmployeeForm(){
 	?>
 	<div class="secondCol">
-		<form action="" method="">
+		<form action="" method="post">
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Login zaměstnance:</td>
@@ -62,6 +62,15 @@ function addEmployeeForm(){
 					<td style="text-align: left;"><input type="email" name="email" placeholder="xlogin@gmail.com"></td>
 				</tr>
 				<tr>
+					<td style="width: 20%;"> Postavení zaměstnance:</td>
+					<td style="text-align: left;"><select list="postaveni" name="postaveni" required="required" style="width: 20%;">
+						<datalist id="postaveni">
+							<option value="0">Zaměstnanec</option>
+							<option value="1">Správce</option>
+						</datalist>
+					</td>	
+				</tr>
+				<tr>
 					<td style="width: 20%;">*Pobočka, na které bude pracovat:</td>
 					<td style="text-align: left;"><select list="pobocka" name="pobocka" required="required" style="width: 20%;">
 						<datalist id="list">
@@ -80,7 +89,7 @@ function addEmployeeForm(){
 				</tr>
 				<tr>
 					<td style="width: 20%;"></td>
-					<td style="text-align: center;"><input type="submit" name="add" value="Přidat" style="color: white;background-color: #4CAF50;margin-right: 20%;"></td>
+					<td style="text-align: center;"><input type="submit" name="addEmp" value="Přidat" style="color: white;background-color: #4CAF50;margin-right: 20%;"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%">* - pole je povinné</td>
