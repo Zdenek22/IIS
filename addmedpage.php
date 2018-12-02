@@ -39,7 +39,7 @@ function makeAddMedPage(){
 function addMedForm(){
 	?>
 	<div class="secondCol">
-		<form action="" method="" id="medform">
+		<form action="operations.php" method="post" id="medform">
 			<table style="width: 100%;border: 1px solid #ccc;border-bottom: 0px;">
 				<tr>
 					<td style="width: 20%;">*Jméno léku:</td>
@@ -61,7 +61,7 @@ function addMedForm(){
 			</tr>
 			<tr>
 				<td style="width: 20%;"></td>
-				<td style="text-align: center;"><input form="medform" type="submit" name="add" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
+				<td style="text-align: center;"><input form="medform" type="submit" name="addMed" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
 			</tr>
 				<tr>
 					<td style="width: 20%">* - pole je povinné</td>
