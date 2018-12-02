@@ -200,6 +200,7 @@ function userInfo($id){
 		$mail = $user['email'];
 	}
 
+	$wealth = $server->getWealth($_SESSION['pobocka']);
 	?>	
 	<div class="info">
 		Uživatel: <? echo $user['jmeno'];echo " "; echo $user['prijmeni']; ?><br>
@@ -211,7 +212,7 @@ function userInfo($id){
 		<?php
 		if($user['postaveni'] == 1){
 			?>
-			Peněz na pobočce: <?echo "xxx";?> Kč<br>
+			Peněz na pobočce: <?echo $wealth;?> Kč<br>
 			<?php
 		}
 		?>
