@@ -43,23 +43,23 @@ function addEmployeeForm(){
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Login zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="login" required="required"></td>
+					<td style="text-align: left;"><input type="text" name="login" required="required" placeholder="xlogin"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">Jméno zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="jmeno"></td>
+					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Jméno"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">Příjmení zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="prijmeni"></td>
+					<td style="text-align: left;"><input type="text" name="prijmeni" placeholder="Příjmení"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">Telefon zaměstnance:</td>
-					<td style="text-align: left;" style="text-align: left;"><input type="text" name="telefon"></td>
+					<td style="text-align: left;" style="text-align: left;"><input type="tel" name="telefon" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="909090909"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">Email zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="email"></td>
+					<td style="text-align: left;"><input type="email" name="email" placeholder="xlogin@gmail.com"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Pobočka, na které bude pracovat:</td>
