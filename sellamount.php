@@ -18,13 +18,7 @@ if(isset($_POST['lek'])){
 	$count = 0;
 	$server = new Database_access();
 	$medicament = $server->getMedicament($_POST['lek'], $_SESSION['pobocka']);
-	echo $_POST['amount'];
-	foreach ($_POST as $key => $value) {
-		echo $key;
-		echo "\n";
-		echo $value;
-		echo "<br>";
-	}
+
 
 	if($medicament[0]['predpis'] == '1'){
 		$fill['jmeno'] = $_POST['jmeno'];
