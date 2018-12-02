@@ -171,6 +171,13 @@ function userAccountInfo(){
 			Telefon: <? echo $phone; ?><br>
 			Status: <? echo $status; ?><br>
 			Pobočka: <? echo $user['pobocka']; ?><br>
+			<?php
+			if($user['postaveni'] == 1){
+				?>
+				Peněz na pobočce: <?echo "xxx";?> Kč<br>
+				<?php
+			}
+		?>
 		</div>
 		<br>
 		<form action="account.php" method="get">
