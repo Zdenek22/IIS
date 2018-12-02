@@ -43,11 +43,11 @@ function addEmployeeForm(){
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Login zaměstnance:</td>
-					<td style="text-align: left;"><input type="password" name="login" required="required" placeholder="xlogin"></td>
+					<td style="text-align: left;"><input type=text name="login" required="required" placeholder="xlogin"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Heslo zaměstnance:</td>
-					<td style="text-align: left;"><input type="text" name="heslo" required="required"></td>
+					<td style="text-align: left;"><input type="password" name="heslo" required="required"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Jméno zaměstnance:</td>
