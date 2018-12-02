@@ -93,7 +93,19 @@ function amountToSell($medicine){
 					</tr>
 					<tr>
 						<td><span class="formDesc">Pojišťovna</span></td>
-						<td><input class="userInput" type="text" name="pojistovna" placeholder="Pojišťovna" required="required"></td>
+						<td><select class="userInput" list="list" name="pojistovna" required="required" style="width: 80%;">
+						<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPojistovna();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
 					</tr>
 				</table>			
 				</div>
@@ -204,7 +216,20 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 					</tr>
 					<tr>
 						<td><span class="formDesc">Pojišťovna</span></td>
-						<td><input class="userInput" type="text" name="pojistovna" value=<?echo '"';echo $fill['pojistovna'];echo '"';?> required="required"></td>
+						<td><select class="userInput" list="list" name="pojistovna" required="required" style="width: 80%;">
+						<datalist id="list">
+								<?php
+
+								$server = new Database_access();
+								$pobo = $server->getAllPojistovna();
+								foreach ($pobo as $key => $value) {
+						 			?>
+						 			<option><?echo $value['jmeno'];?></option>
+						 			<?php
+						 		} 
+								?>	
+							</datalist>
+						</td>
 					</tr>
 				</table>			
 				</div>
