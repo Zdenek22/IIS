@@ -5,6 +5,7 @@ session_start();
 require_once "DBOperations.php";
 require_once "supFunct.php";
 
+
 $server = new Database_access();
 
 if(isset($_GET['add'])){
@@ -124,8 +125,7 @@ if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
 }
 
 if(isset($_POST['vydat'])){
-echo "ahojky";
-echo "$_POST[amount]";
+	$_POST['lek'] = $server->getMedsName($_POST['lek']); //ZMENA
 	//JE TO NA PREDPIS
 	$prispevek = 0;
 	if($_POST['predpis'] === '1'){
@@ -177,6 +177,7 @@ echo "$_POST[amount]";
 
 		if(!(empty($zakaznik))){ //TODO KAM PRESMERUJE
 			if($zakaznik['jmeno']!=$_POST['jmeno'] or $zakaznik['prijmeni']!=$_POST['prijmeni']){
+				$_POST['lek'] = $server->getMedsID($_POST['lek']);
 				$_POST['RC']=1;
 				?>
 				<form id="myForm" action="sellamount.php" method="post">
@@ -210,6 +211,7 @@ echo "$_POST[amount]";
 	}
 
 	if($_POST['amount']>$pocet){
+			$_POST['lek'] = $server->getMedsID($_POST['lek']);
 			$_POST['amount']=0;
 			?>
 			<form id="myForm" action="sellamount.php" method="post">
@@ -227,7 +229,7 @@ echo "$_POST[amount]";
 	}
 
 		$_POST['vydat']=$prispevek;
-
+		$_POST['lek'] = $server->getMedsID($_POST['lek']); //ZMENA
 		?>
 		<form id="myForm" action="sell.php" method="post">
 		<?php

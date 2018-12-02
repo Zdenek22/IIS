@@ -9,7 +9,7 @@ require_once "mainpage.php";
 require_once "accountinfo.php";
 
 $server = new Database_access();
-
+$_POST['lek'] = $server->getMedsName($_POST['lek']); //ZMENA
 $idLeku = $server->getMedsID($_POST['lek']);
 $cenaLeku = $server->getMedsValue($idLeku);
 
