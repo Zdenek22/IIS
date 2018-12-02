@@ -225,8 +225,24 @@ echo "$_POST[amount]";
 			<?
 			die();
 	}
-	echo "prispevek je $prispevek";
 
+		$_POST['vydat']=$prispevek;
+
+		?>
+		<form id="myForm" action="sell.php" method="post">
+		<?php
+		  foreach ($_POST as $a => $b) {
+		     	echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+		  	}
+		?>
+		</form>
+		<script type="text/javascript">
+		document.getElementById('myForm').submit();
+		</script>
+		<?
+		die();
 }
 
+
+//if(isset($_POST['vydat'])){
 ?>
