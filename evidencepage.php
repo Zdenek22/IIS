@@ -41,6 +41,7 @@ function makeEvidencePage(){
 
 function startEvidenceTable(){
 	?>
+	<div class="secondCol">
 	<table class="evidenceTable">
 				<!--cas, kdo, co, komu, pojistovna, kolik	-->	
 			<tr>
@@ -57,32 +58,26 @@ function startEvidenceTable(){
 }
 
 
-function fillEvidenceTable($count, $transakce, $medicine){
+function fillEvidenceTable($transakce){
 	?>	
 	<tr>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-		<td rowspan=<?echo '"';echo $count;echo '"';?> ><?echo $transakce[''];?></td>
-
-		<?php
-		for ($i=0; $i < $count; $i++) { 
-			?>
-			<td><?echo $medicine[''];?></td>
-			<td><?echo $medicine[''];?></td>
-			</tr>
-			<?php
-		}	
-		?>	
-	<?php			
+		<td><?echo $transakce['cas'];?></td>
+		<td><?echo $transakce['login'];?></td>
+		<td><?echo $transakce['RC'];?></td>
+		<td><?echo $transakce['jmeno'];?></td>
+		<td><?echo $transakce['prijmeni'];?></td>
+		<td><?echo $transakce['pojistovna'];?></td>
+		<td><?echo $transakce['lek'];?></td>
+		<td><?echo $transakce['kolik'];?></td>
+	</tr>	
+	<?php
 }
 
 
 function endEvidenceTable(){
 	?>
 	</table>
+	</div>
 	<?php
 }
 
