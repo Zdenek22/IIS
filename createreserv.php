@@ -18,7 +18,8 @@ if(isset($_POST['lek'])){
 	$errorMsg;
 	$count = 0;
 	$server = new Database_access();
-	$medicament = $server->getMedicament($_POST['lek'], $_SESSION['pobocka']);
+	$jmeno = $server->getMedsName($_POST['lek']);
+	$medicament = $server->getMedicament($jmeno, $_SESSION['pobocka']);
 
 	$fill['jmeno'] = $_POST['jmeno'];
 	$fill['prijmeni'] = $_POST['prijmeni'];

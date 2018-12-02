@@ -45,7 +45,10 @@ function showMedicine($medicine){
 
 	$popis = "";
 	if(isset($medicine['popis']))
-		$popis = $medicine['popis'];		
+		$popis = $medicine['popis'];
+
+	$server = new Database_access();	
+	$id = $server->getMedsID($medicine['jmeno']);		
 	?>	
 	<div class="secondCol">
 		<div class="medicineInfo">
@@ -64,7 +67,7 @@ function showMedicine($medicine){
 			</div>
 		</div>	
 		<form action="reservationProceed.php" method="post">
-			<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+			<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 			<div class="userForm" style="float: left">
 			<?php
 				if(!(isset($_COOKIE['tmp_rezervace']))){
@@ -183,7 +186,9 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 	if(isset($medicine['popis']))
 		$popis = $medicine['popis'];
 	else
-		$popis = "";			
+		$popis = "";
+	$server = new Database_access();	
+	$id = $server->getMedsID($medicine['jmeno']);			
 	?>	
 	<div class="secondCol">
 		<div class="medicineInfo">
@@ -204,7 +209,7 @@ function fillAgain($fill, $errorMsg, $count, $medicine){
 		<form action="reservationProceed.php" method="post">
 			<div class="userForm" style="float: left">
 				<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
-				<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+				<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 
 				<table style="float: left;">
 					<tr>
