@@ -88,31 +88,139 @@ if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
 			$rezervuje[$key]['rezervace'] = $val;
 		}
 
+		$ZAKAZNIK_CELKEM=0;
+		$POBOCKA_CELKEM=0;
 		//spocitat celkovou cenu pro zakaznika
 		//spocitat celkovou castku pro lekarnu
 		foreach ($rezervuje as $key => $value) {
-			$val=$server->getMedsValue($value['lek']);
-			$rezervuje[$key]['neslevnenaCena'] = $val;
+			$rezervuje[$key]['neslevnenaCena'] = $server->getMedsValue($value['lek']);
+			$rezervuje[$key]['celkemBezSlevy'] = ($rezervuje[$key]['neslevnenaCena'])*($rezervuje[$key]['pocet']);
+			$rezervuje[$key]['celkemSeSlevou'] = $rezervuje[$key]['celkemBezSlevy']-($rezervuje[$key]['pocet']*$rezervuje[$key]['rezervace']);
+			$rezervuje[$key]['lek'] = $server->getMedsName($value['lek']);
+			$ZAKAZNIK_CELKEM+=$rezervuje[$key]['celkemSeSlevou'];
+			$POBOCKA_CELKEM+=$rezervuje[$key]['celkemBezSlevy'];
 		}
-
+/*
 		foreach ($rezervuje as $key => $value) {
 			echo "neslevnena cena $value[neslevnenaCena]<br>";}
 
 		foreach ($rezervuje as $key => $value) {
-			$rezervuje[$key]['celkemBezSlevy'] = ($rezervuje[$key]['neslevnenaCena'])*($rezervuje[$key]['pocet']);
+
 			$tmp = $rezervuje[$key]['celkemBezSlevy'];
 			echo "celkem $tmp <br>";}
 
 		foreach ($rezervuje as $key => $value) {
-			$rezervuje[$key]['celkemSeSlevou'] = $rezervuje[$key]['celkemBezSlevy']-($rezervuje[$key]['pocet']*$rezervuje[$key]['rezervace']);
+
 			$tmp = $rezervuje[$key]['celkemSeSlevou'];
 			echo "celkem se slevou $tmp <br>";}
-
+*/
 			//nahradit cisla leku jmenem getMedsName
 			foreach ($rezervuje as $key => $value) {
-			$rezervuje[$key]['lek'] = $server->getMedsName($value['lek']);
 			$tmp = $rezervuje[$key]['lek'];
 			echo "celkem se slevou $tmp <br>";}
 
+
+
 }
+
+if(isset($_POST['finish'])){
+
+	//JE TO NA PREDPIS
+	if($_POST['predpis'] === 1){
+		echo "na predpis"; 
+
+		$anyError=0;
+
+		if (preg_match('#[0-9]#',$_POST['jmeno'])){
+			$_POST['jmeno']=0;
+			$anyError = 1;
+		}
+
+		if (preg_match('#[0-9]#',$_POST['prijmeni'])){
+			$_POST['prijmeni']=0;
+			$anyError = 1;
+		}
+
+		if(!(checkRC($_POST['RC']))){
+			$_POST['RC']=0;
+			$anyError = 1;
+		}
+
+		$pojistovna = $server->getPojistovna($_POST['pojistovna']);
+
+		if(empty($pojistovna)){
+			$_POST['pojistovna']=0;
+			$anyError = 1;
+		}
+
+
+		if($anyError === 1){
+				//echo "chyba";  //TODO KAM PRESMERUJE
+			?>
+			<form id="myForm" action="sellamount.php" method="post">  
+			<?php
+			    foreach ($_POST as $a => $b) {
+			        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+			    }
+			?>
+			</form>
+			<script type="text/javascript">
+			    document.getElementById('myForm').submit();
+			</script>
+			<?
+			die();
+		}
+
+		$zakaznik = $server->getZakaznik($_POST['RC']);
+
+		if(!(empty($zakaznik))){ //TODO KAM PRESMERUJE
+			if($zakaznik['jmeno']!=$_POST['jmeno'] or $zakaznik['prijmeni']!=$_POST['prijmeni']){
+				$_POST['RC']=1;
+				?>
+				<form id="myForm" action="sellamount.php" method="post">
+				<?php
+		   			foreach ($_POST as $a => $b) {
+		     		   echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+		  		  	}
+				?>
+				</form>
+				<script type="text/javascript">
+		  		  document.getElementById('myForm').submit();
+				</script>
+				<?
+				die();
+			}
+		}
+	}
+
+	//Kontrola, zda je na sklade dost leku
+	$pocet;
+	$skladem = $server->getMedicament($_POST['lek'],$_SESSION['pobocka']);
+	if(isset($skladem[0]['pocet']))
+		$pocet=0;
+	else{
+		$pocet= $skladem[0]['pocet'];
+	}
+
+	if($_POST['amount']>$pocet){
+			$_POST['amount']=0;
+			?>
+			<form id="myForm" action="sellamount.php" method="post">
+			<?php
+		   		foreach ($_POST as $a => $b) {
+		     	   echo '<input type="hidden" name="'.htmlentities($a).'" value="'
+		     	   htmlentities($b).'">';
+		  	 	}
+			?>
+			</form>
+			<script type="text/javascript">
+		  	 document.getElementById('myForm').submit();
+			</script>
+			<?
+			die();
+	}
+
+
+}
+
 ?>
