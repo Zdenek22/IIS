@@ -25,7 +25,7 @@ function makeEvidencePage(){
 	<head>
    	 <link rel="stylesheet" type="text/css" href="mainstyle.css">
    	 <link rel="icon" type="image/x-icon" href="snake.png">
-   	 <title>Lékárna - vytvořit rezervaci</title>
+   	 <title>Lékárna - evidence transakcí</title>
 	</head>
 	<body>
 	<?php
