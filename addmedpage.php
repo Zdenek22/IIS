@@ -43,18 +43,17 @@ function addMedForm(){
 			<table style="width: 100%;border: 1px solid #ccc;border-bottom: 0px;">
 				<tr>
 					<td style="width: 20%;">*Jméno léku:</td>
-					<td style="text-align: left;"><input type="text" name="jmeno" placeholder="Indulona" required="required"></td>
+					<td style="text-align: left;"><input type="text" name="jmeno" required="required" placeholder="Indulona"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Cena (Kč):</td>
-					<td style="text-align: left;"><input type="number" name="cena" placeholder="42" required="required"></td>
+					<td style="text-align: left;"><input type="number" name="cena" required="required" value="1" min="1"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Počáteční množství:</td>
-					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" placeholder="42" required="required"></td>
+					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" required="required" placeholder="42" min="0"></td>
 				</tr>
 			</table>
-		</form>
 		<table style="width: 100%;border: 1px solid #ccc;border-top: 0px;">
 			<tr>
 				<td style="width: 20%;"> Popis léku:</td>
@@ -67,7 +66,8 @@ function addMedForm(){
 				<tr>
 					<td style="width: 20%">* - pole je povinné</td>
 				</tr>
-		</table>	
+		</table>
+		</form>	
 	</div>
 	<?php
 }
