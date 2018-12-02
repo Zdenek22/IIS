@@ -295,6 +295,11 @@ class Database_access
         return $res['Penize'];
     }
 
+    function getTransactions(){
+        $stmt = $this->pdo->prepare('SELECT prodal.kdy cas, prodal.kdo login, prodal.komu RC, zakaznik.jmeno jmeno, zakaznik.prijmeni prijmeni, pojistovna.jmeno pojistovna, lek.jmeno lek, prodal.kolik kolik FROM prodal, zakaznik, pojistovna, lek WHERE prodal.komu = zakaznik.RC AND prodal.pojistovna=pojistovna.id AND prodal.co=lek.id');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
+}
 
     function rmvMed($kde, $co, $kolik){
         $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE pobocka = ? AND lek = ?');
