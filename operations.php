@@ -4,6 +4,9 @@ session_start();
 
 require_once "DBOperations.php";
 require_once "supFunct.php";
+require_once "sellpage.php";
+require_once "mainpage.php";
+require_once "accountinfo.php";
 
 
 $server = new Database_access();
@@ -101,27 +104,18 @@ if(isset($_GET['reservation']) and $_GET['reservation'] === 'Vydej'){
 			$ZAKAZNIK_CELKEM+=$rezervuje[$key]['celkemSeSlevou'];
 			$POBOCKA_CELKEM+=$rezervuje[$key]['celkemBezSlevy'];
 		}
-/*
+		
+		//nahradit cisla leku jmenem getMedsName
 		foreach ($rezervuje as $key => $value) {
-			echo "neslevnena cena $value[neslevnenaCena]<br>";}
-
-		foreach ($rezervuje as $key => $value) {
-
-			$tmp = $rezervuje[$key]['celkemBezSlevy'];
-			echo "celkem $tmp <br>";}
-
-		foreach ($rezervuje as $key => $value) {
-
-			$tmp = $rezervuje[$key]['celkemSeSlevou'];
-			echo "celkem se slevou $tmp <br>";}
-*/
-			//nahradit cisla leku jmenem getMedsName
-			foreach ($rezervuje as $key => $value) {
-			$tmp = $rezervuje[$key]['lek'];
-			echo "celkem se slevou $tmp <br>";}
-
-
-
+		$tmp = $rezervuje[$key]['lek'];
+		//echo "celkem se slevou $tmp <br>";
+		}
+		
+		makeSellPage();
+		mainPageButtons();
+		overviewReserv(count($rezervuje),$rezervuje,$ZAKAZNIK_CELKEM,$POBOCKA_CELKEM); //$cout,$rezervace -> [], $zakaznik
+		userAccountInfo();
+		endSellPage();
 }
 
 if(isset($_POST['vydat'])){
