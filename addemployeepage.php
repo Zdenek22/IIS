@@ -39,7 +39,7 @@ function makeAddEmployeePage(){
 function addEmployeeForm(){
 	?>
 	<div class="secondCol">
-		<form action="" method="post">
+		<form action="operations.php" method="post">
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Login zaměstnance:</td>
@@ -108,7 +108,7 @@ function addEmployeeForm(){
 function fillEmployeeAgain($employee, $errormsg, $count){
 	?>
 	<div class="secondCol">
-		<form action="" method="post">
+		<form action="operations.php" method="post">
 			<table style="width: 100%;border: 1px solid #ccc;">
 				<tr>
 					<td style="width: 20%;">*Login zaměstnance:</td>
