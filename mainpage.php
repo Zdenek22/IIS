@@ -70,20 +70,14 @@ function mainPageButtons(){
 				<form action="addEmployee.php" method="get">
 					<button style="margin-top: 100px;" class="menuButtons" type="submit">Přidat zaměstnance</button>	
 				</form>
-				<form action="removeEmployee.php" method="get">
-					<button class="menuButtons" type="submit">Odebrat zaměstnance</button>	
-				</form>
 				<form action="addMed.php">
 					<button class="menuButtons" type="submit">Přidat nový lék</button>
-				</form>
-				<form action="removeMed.php">
-					<button class="menuButtons" type="submit">Odebrat lék</button>
 				</form>
 				<form action="addPobocka.php">
 					<button class="menuButtons" type="submit">Přidat pobočku</button>
 				</form>
-				<form action="removePobocka.php">
-					<button class="menuButtons" type="submit">Odebrat pobočku</button>
+				<form action="evidence.php">
+					<button class="menuButtons" type="submit">Evidence transakcí</button>
 				</form>
 				<?php
 			}
@@ -148,10 +142,16 @@ function fillTable($medicine, $newline){
 	<?php	
 }
 
-function endTable(){
+function endTable($msg){
 	?>
 			</tr>	<!-- konec radku tabulky -->
 		</table>	<!-- konec tabulky -->
+		<?php 
+			if(!($msg == 0)){
+				?>
+				<div style="float: left;"><?echo $msg;?></div>
+			}
+		?>
 	</div>			<!-- konec secondCol -->
 	<?php	
 }
