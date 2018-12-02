@@ -159,6 +159,8 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 		$predpis = "Ne";
 
 	$popis = "";
+	$server = new Database_access();	
+	$id = $server->getMedsID($medicine['jmeno']);
 	if(isset($medicine['popis']))
 		$popis = $medicine['popis'];
 	?>
@@ -184,7 +186,7 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 
 			<form action="operations.php" method="post">
 				<div class="userForm" style="float: left">
-					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 					<input type="hidden" name="predpis" value="1">
 					<caption>Vyplňte formulář (všechny položky jsou povinné):</caption><br>
 					<table style="float: left;">
@@ -231,7 +233,7 @@ function fillSellAgain($fill, $errorMsg, $count, $medicine){
 			?>
 			<form action="operations.php" method="post">
 				<div class="sellAmount">
-					<input type="hidden" name="lek" value=<?echo '"';echo $medicine['jmeno'];echo '"';?>>
+					<input type="hidden" name="lek" value=<?echo '"';echo $id;echo '"';?>>
 					<input type="hidden" name="predpis" value="0">
 					<span class="amountDesc">Množství léku (ks):</span>
 					<input class="numAmount" type="number" name="amount" value="1" min="1">

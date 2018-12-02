@@ -12,13 +12,12 @@ makeSellAmountPage();
 mainPageButtons();
 
 if(isset($_POST['lek'])){
-
 	$fill;
 	$errorMsg[0] = "";
 	$count = 0;
 	$server = new Database_access();
-	$medicament = $server->getMedicament($_POST['lek'], $_SESSION['pobocka']);
-
+	$jmeno = $server->getMedsName($_POST['lek'])
+	$medicament = $server->getMedicament($jmeno, $_SESSION['pobocka']);
 
 	if($medicament[0]['predpis'] == '1'){
 		$fill['jmeno'] = $_POST['jmeno'];
