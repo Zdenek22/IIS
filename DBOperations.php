@@ -234,7 +234,7 @@ class Database_access
 
     function addTransaction($kdo, $co, $komu, $pojistovna, $kolik){
         //echo "$kdo, $co, $komu, $pojistovna, $kolik";
-        $stmt = $this->pdo->prepare("INSERT INTO prodal (kdo, co, komu, pojistovna, kolik) VALUES(?,?,?,?,?)");
+        $stmt = $this->pdo->prepare("INSERT INTO prodal (kdy, kdo, co, komu, pojistovna, kolik) VALUES(now(),?,?,?,?,?)");
         $stmt->execute(array($kdo, $co, $komu, $pojistovna, $kolik));
     }
 

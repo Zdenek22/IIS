@@ -194,6 +194,9 @@ if(isset($_POST['vydat'])){
 				die();
 			}
 		}
+		else{
+				 $server->insertZakaznik($_POST['RC'], $_POST['jmeno'], $_POST['prijmeni']);
+			}
 
 		$idPojistovny = $server->getPojistovna($_POST['pojistovna']);
 		$idPojistovny = $idPojistovny['id'];
@@ -248,10 +251,6 @@ if(isset($_POST['vydat'])){
 
 if(isset($_POST['finish'])){
 
-	echo "Jdeme do finale";
-	foreach ($_POST as $key => $value) {
-		echo "$key je $value <br>";
-	}
 	$server->addMoney($_SESSION['pobocka'], $_POST['celkem']);
 	$idLek = $server->getMedsID($_POST['lek']);
 	$server->rmvMed($_SESSION['pobocka'], $idLek ,$_POST['pocet']);
@@ -259,6 +258,7 @@ if(isset($_POST['finish'])){
 	if(isset($_POST['RC'])){
 		$idPojistovny= $server->getPojistovna($_POST['pojistovna']);
 		$idPojistovny = $idPojistovny['id'];
+		//echo "tady sem $_SESSION[user],$idLek, $_POST[RC], $idPojistovny, $_POST[pocet]";
 		$server->addTransaction($_SESSION['user'],$idLek, $_POST['RC'], $idPojistovny, $_POST['pocet']);
 	}
 
