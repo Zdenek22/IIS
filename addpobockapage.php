@@ -55,15 +55,16 @@ function addPobockaForm(){
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Číslo domu:</td>
-					<td style="text-align: left;"><input type="num" required="required" name="cislo" min="1" placeholder="1"></td>
+					<td style="text-align: left;"><input type="number" required="required" name="cislo" min="1" placeholder="1"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*PSČ:</td>
-					<td style="text-align: left;"><input type="num" required="required" name="psc" placeholder="66666" pattern="[0-9]{5}"></td>
+					<td style="text-align: left;"><input type="number" required="required" name="psc" placeholder="66666" pattern="[0-9]{5}"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%;">*Peníze na pobočce:</td>
-					<td style="text-align: left;"><input type="num" required="required" name="penize" min="1"></td>
+					<td style="text-align: left;"><input type="number" required="required" name="penize" min="1" placeholder="1">
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;"></td>
