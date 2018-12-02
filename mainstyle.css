@@ -448,16 +448,3 @@ body{
 .finishBut:hover, .cancelButtTemp:hover{
 	opacity: 0.8;
 }
-
-.secondCol .evidenceTable{
-	width: 100%;
-	border: 1px solid #ccc; 
-	border-collapse: collapse;
-}
-
-
-.secondCol .evidenceTable tr td, .evidenceTable tr th{
-	border-collapse: collapse;
-	text-align: center;
-	border: 1px solid #ccc;
-}
