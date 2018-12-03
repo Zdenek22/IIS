@@ -397,4 +397,42 @@ if(isset($_GET['zamestnanci'])){
 	endEmployeeListPage();
 
 }
+
+if(isset($_POST['telefon'])){
+	$telefon;
+	if(!empty($_POST['telefon']))
+		$telefon = $_POST['telefon'];
+	$server->changeTelefon($telefon, $_SESSION['user']);
+	redirect('account.php');
+}
+
+if(isset($_POST['email'])){
+	$email;
+	if(!empty($_POST['email']))
+		$email = $_POST['email'];
+	$server->changeEmail($email, $_SESSION['user']);
+	redirect('account.php');
+}
+
+if(isset($_POST['heslo'])){
+	if ($_POST['heslo'] !== $_POST['heslo2']) {
+		$_POST['error']=1;
+			?>
+			<form id="myForm" action="changeValues.php" method="post">  
+			<?php
+			    foreach ($_POST as $a => $b) {
+			        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+			    }
+			?>
+			</form>
+			<script type="text/javascript">
+			    document.getElementById('myForm').submit();
+			</script>
+			<?
+			die();
+	}
+	else
+		$server->changeHeslo($_POST['heslo'], $_SESSION['user']);
+	redirect('account.php');
+}
 ?>

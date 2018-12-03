@@ -83,6 +83,20 @@ class Database_access
         }
     }
 
+    function changeEmail($email, $login){
+            $stmt = $this->pdo->prepare("UPDATE uzivatel SET email = ? WHERE login = ?");
+            $stmt->execute(array($email, $login));
+    }
+
+    function changeTelefon($telefon, $login){
+            $stmt = $this->pdo->prepare("UPDATE uzivatel SET telefon = ? WHERE login = ?");
+            $stmt->execute(array($telefon, $login));
+    }
+    function changeHeslo($heslo, $login){
+            $stmt = $this->pdo->prepare("UPDATE uzivatel SET heslo = ? WHERE login = ?");
+            $stmt->execute(array($heslo, $login));
+    }
+
     //Funkce ulozi zakaznika, zadane RC, jmeno, prijmeni
     function insertZakaznik($RC, $jmeno, $prijmeni)
     {
