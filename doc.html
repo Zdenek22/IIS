@@ -19,11 +19,10 @@
 <dl>
 	<dt>Autoři</dt>
 	<dd>Zdeněk Jelínek<!-- Nahraïte skuteèným jménem a e-mailem autora a popisem èinnosti -->
-	    <a href="mailto:xjelin47@stud.fit.vutbr.cz">xjelin47@stud.fit.vutbr.cz</a> - uživatelské rozhraní
+	    <a href="mailto:xjelin47@stud.fit.vutbr.cz">xjelin47@stud.fit.vutbr.cz</a> - uživatelské rozhraní, naplnění databáze daty
 	</dd>
 	<dd>Adam Gregor <!-- Nahraïte skuteèným jménem a e-mailem autora a popisem èinnosti -->
-	    <a href="mailto:xgrego18@stud.fit.vutbr.cz">xgrego18@stud.fit.vutbr.cz</a> - 
-		databázový subsystém
+	    <a href="mailto:xgrego18@stud.fit.vutbr.cz">xgrego18@stud.fit.vutbr.cz</a> - databázový subsystém, naplnění databáze daty, backend
 	</dd>
 	<dt>URL aplikace</dt>
 	<dd><a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
@@ -33,14 +32,77 @@
 <h2>Uživatelé systému pro testování</h2>
 <p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
 <table>
-<tbody><tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
-<tr><td>xrita</td><td>me</td><td>Administrátor</td></tr>
-<tr><td>xalbus</td><td>avada</td><td>Zaměstnanec</td></tr>
-<tr><td>franta</td><td>franta</td><td>Zákazník</td></tr>
+<tbody><tr><th>Login</th><th>Heslo</th><th>Role</th><th>Váže se k pobočce</th></tr>
+<tr><td>xrita</td><td>me</td><td>Správce</td><td>U Raka</td></tr>
+<tr><td>xalbus</td><td>avada</td><td>Zaměstnanec</td><td>U Raka</td></tr>
 </tbody></table>
 
 <h2>Implementace</h2>
-<p>Struèná dokumentace k implementaci, která popisuje, které PHP skripty implementují jednotlivé pøípady pou¾ití uvedené v use-case diagramu z IDS. V pøípadì, ¾e bylo nutno pøi implementaci uèinit zmìny v návrhu, musí být v dokumentaci zdùvodnìny.</p>
+<p>Krátký popis systému: <br>
+Systém mohou využívat správci a zaměstnanci. Každá pobočka má své vlasní správce a zaměstnance. Zaměstnanec může tvořit/odebírat rezervace léků na předpis, vydávat léky na předpis i bez předpisu, prohlížet seznam všech rezervací na všech pobočkách, prohlížet množství léků na skladě pobočky na které pracuje. Správce může vše co zaměstnanec. Jeho rozšíření spočívá v přidání zaměstnance, nového léku a pobočky. Také může prohlížet všechny prodeje léků, které byly na předpis. Správce má k dispozici seznam všech zaměstnanců. Každý uživatel může spravovat svůj účet.
+</p>
+<table>
+	<tr>
+		<th>Případ použití</th>
+		<th>Odpovídající skript</th>
+	</tr>
+	<tr>
+		<td>Přihlášení do systému</td>
+		<td>login.php</td>
+	</tr>
+	<tr>
+		<td>Hlavní stránka</td>
+		<td>main.php</td>
+	</tr>
+	<tr>
+		<td>Seznam rezervací</td>
+		<td>reservations.php</td>
+	</tr>
+	<tr>
+		<td>Sklad</td>
+		<td>store.php</td>
+	</tr>
+	<tr>
+		<td>Správa účtu</td>
+		<td>account.php</td>
+	</tr
+	<tr>
+		<td>Přidat zaměstnance</td>
+		<td>addEmployee.php</td>
+	</tr>
+	<tr>
+		<td>Přidat nový lék</td>
+		<td>addMed.php</td>
+	</tr>
+	<tr>
+		<td>Přidat pobočku</td>
+		<td>addPobocka.php</td>
+	</tr>
+	<tr>
+		<td>Evidence transakcí</td>
+		<td>evidence.php</td>
+	</tr>
+	<tr>
+		<td>Seznam zaměstnanců</td>
+		<td>operations.php</td>
+	</tr>
+	<tr>
+		<td>Rezervace léku na předpis</td>
+		<td>createreserv.php</td>
+	</tr>
+	<tr>
+		<td>Vydat lék</td>
+		<td>sellamount.php</td>
+	</tr>
+	<tr>
+		<td>Detail léku</td>
+		<td>medicinedetail.php</td>
+	</tr>
+	<tr>
+		<td>Odhlášení se</td>
+		<td>logout.php</td>
+	</tr>	
+</table>
 
 <h2>Instalace</h2>
 <ul>
