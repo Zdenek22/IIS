@@ -58,6 +58,17 @@ function startEmployeeListTable(){
 
 
 function fillEmployeeListTable($employee){
+	if(!isset($employee['telefon'])){
+		$employee['telefon'] = "N/A";
+	}
+	if(!isset($employee['email'])){
+		$employee['email'] = "N/A";
+	}
+	$postaveni;
+	if($employee['postaveni'] == '0')
+		$postaveni = "Zaměstnanec";
+	else
+		$postaveni = "Správce";
 	?>	
 	<tr>
 		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['login'];?></td>
@@ -65,7 +76,7 @@ function fillEmployeeListTable($employee){
 		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['prijmeni'];?></td>
 		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['telefon'];?></td>
 		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['email'];?></td>
-		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['postaveni'];?></td>
+		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $postaveni;?></td>
 		<td style="border-collapse: collapse;text-align: center;border: 1px solid #ccc;"><?echo $employee['pobocka'];?></td>
 	</tr>	
 	<?php
