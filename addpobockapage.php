@@ -62,13 +62,13 @@ function addPobockaForm(){
 					<td style="text-align: left;"><input type="number" required="required" name="psc" placeholder="66666" pattern="[0-9]{5}"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">*Peníze na pobočce:</td>
+					<td style="width: 20%;">*Peníze na pobočce (Kč):</td>
 					<td style="text-align: left;"><input type="number" required="required" name="penize" min="1" placeholder="1">
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 20%;"></td>
-					<td style="text-align: center;"><input form="medform" type="submit" name="addPobocka" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
+					<td style="text-align: center;"><input type="submit" name="addPobocka" value="Přidat" style="color: white;background-color:#4CAF50;margin-right: 20%;"></td>
 				</tr>
 				<tr>
 					<td style="width: 20%">* - pole je povinné</td>
