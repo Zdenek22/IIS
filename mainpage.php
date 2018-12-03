@@ -79,6 +79,9 @@ function mainPageButtons(){
 				<form action="evidence.php">
 					<button class="menuButtons" type="submit">Evidence transakcí</button>
 				</form>
+				<form action="">
+					<button class="menuButtons" type="submit">Seznam zaměstnanců</button>
+				</form>
 				<?php
 			}
 			?>
