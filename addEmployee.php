@@ -8,6 +8,8 @@ require_once "DBOperations.php";
 require_once "addemployeepage.php";
 require_once "accountinfo.php";
 
+checkNsetLogin();
+
 makeAddEmployeePage();
 mainPageButtons();
 
