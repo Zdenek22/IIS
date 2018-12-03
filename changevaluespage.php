@@ -46,7 +46,7 @@ function changeTelefon(){
 				<form action="operations.php" method="get">
 					<td style="text-align: left;">
 						<input type="tel" name="telefon" pattern="[0-9]{3}[0-9]{3}[0-9]{3}">
-						<input type="submit" name="changeTelefon" value="Přidat" style="color: white;background-color: #4CAF50;margin-right: 20%;">
+						<input type="submit" name="changeTelefon" value="Změnit" style="color: white;background-color: #4CAF50;margin-right: 20%;">
 					</td>
 				</form>		
 			</tr>
@@ -64,7 +64,7 @@ function changeEmail(){
 				<form action="operations.php" method="get">
 					<td style="text-align: left;">
 						<input type="email" name="email" placeholder="xlogin@gmail.com">
-						<input type="submit" name="changeEmail" value="Přidat" style="color: white;background-color: #4CAF50;margin-right: 20%;">
+						<input type="submit" name="changeEmail" value="Změnit" style="color: white;background-color: #4CAF50;margin-right: 20%;">
 					</td>
 				</form>		
 			</tr>
@@ -82,7 +82,7 @@ function changeHeslo(){
 				<form action="operations.php" method="get">
 					<td style="text-align: left;">
 						<input type="password" name="heslo">
-						<input type="submit" name="changeHeslo" value="Přidat" style="color: white;background-color: #4CAF50;margin-right: 20%;">
+						<input type="submit" name="changeHeslo" value="Změnit" style="color: white;background-color: #4CAF50;margin-right: 20%;">
 					</td>
 				</form>		
 			</tr>

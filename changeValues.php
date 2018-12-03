@@ -20,7 +20,7 @@ elseif (isset($_GET['changeEmail'])) {
 	changeEmail();
 }
 elseif (isset($_GET['changeHeslo'])) {
-	changeHeslo()
+	changeHeslo();
 }
 
 userAccountInfo();
