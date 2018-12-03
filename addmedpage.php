@@ -54,7 +54,7 @@ function addMedForm(){
 					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" required="required" value="1" min="0"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Na předpis:</td>
+					<td style="width: 20%;">*Na předpis:</td>
 					<td style="text-align: left;" style="text-align: left;"><select list="predpis" name="predpis" required="required" style="width: 20%;">
 						<datalist id="predpis">
 							<option value="0">Ne</option>
@@ -101,7 +101,7 @@ function Again($fill){
 					<td style="text-align: left;" style="text-align: left;"><input type="number" name="amount" required="required" value=<?echo '"';echo $fill['amount'];echo '"';?> min="0"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;">Na předpis:</td>
+					<td style="width: 20%;">*Na předpis:</td>
 					<td style="text-align: left;" style="text-align: left;"><select list="predpis" name="predpis" required="required" style="width: 20%;">
 						<datalist id="predpis">
 							<option value="0">Ne</option>
