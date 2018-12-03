@@ -7,6 +7,7 @@ require_once "supFunct.php";
 require_once "sellpage.php";
 require_once "mainpage.php";
 require_once "accountinfo.php";
+require_once "employeelistpage.php";
 
 
 $server = new Database_access();
@@ -382,4 +383,18 @@ if(isset($_POST['addPobocka'])){
 		redirect('main.php');
 }
 
+if(isset($_GET['zamestnanci'])){
+	makeEmployeeListPage();
+	mainPageButtons();
+	startEmployeeListTable();
+	$zamestnanci = $server->getAllZamestnanec();
+	foreach ($zamestnanci as $key => $value) {
+		fillEmployeeListTable($value);
+	}
+	
+	endEmployeeListTable();
+	userAccountInfo();
+	endEmployeeListPage();
+
+}
 ?>

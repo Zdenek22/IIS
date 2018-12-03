@@ -251,6 +251,8 @@ class Database_access
         return $stmt->fetchAll();
     }
 
+
+
     function addTransaction($kdo, $co, $komu, $pojistovna, $kolik){
         //echo "$kdo, $co, $komu, $pojistovna, $kolik";
         $stmt = $this->pdo->prepare("INSERT INTO prodal (kdy, kdo, co, komu, pojistovna, kolik) VALUES(now(),?,?,?,?,?)");
@@ -335,6 +337,13 @@ class Database_access
         $stmt->execute(array());
         return $stmt->fetchAll();
 }
+
+    function getAllZamestnanec(){
+        $stmt = $this->pdo->prepare('SELECT uzivatel.login, uzivatel.jmeno, uzivatel.prijmeni, uzivatel.telefon, uzivatel.email, uzivatel.postaveni, pobocka.jmeno pobocka FROM uzivatel, pobocka WHERE uzivatel.pobocka =pobocka.id');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
+
+    }
 
     function rmvMed($kde, $co, $kolik){
         $stmt = $this->pdo->prepare('SELECT pocet FROM skladem WHERE pobocka = ? AND lek = ?');
