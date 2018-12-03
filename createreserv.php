@@ -8,6 +8,8 @@ require_once "DBOperations.php";
 require_once "makereservpage.php";
 require_once "accountinfo.php";
 
+checkNsetLogin();
+
 makeMakeReservPage();
 mainPageButtons();
 

@@ -7,7 +7,7 @@ require "mainpage.php";
 require_once "DBOperations.php";
 require_once "detailpage.php";
 require_once "accountinfo.php";
-
+checkNsetLogin();
 makeDetailPage();
 mainPageButtons();
 

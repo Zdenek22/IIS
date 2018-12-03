@@ -9,7 +9,7 @@ require_once "mainpage.php";
 require_once "accountinfo.php";
 require_once "evidencepage.php";
 
-
+checkNsetLogin();
 $server = new Database_access();
 
 makeEvidencePage();
@@ -18,7 +18,6 @@ startEvidenceTable();
 
 
 $transakce= $server->getTransactions();
-$transakce = array_reverse($transakce);
 if (!empty($transakce)) {
 	foreach ($transakce as $key => $value) {
 		fillEvidenceTable($value);

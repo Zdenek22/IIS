@@ -9,7 +9,6 @@ require_once "mainpage.php";
 require_once "accountinfo.php";
 require_once "employeelistpage.php";
 
-
 $server = new Database_access();
 header("Content-Type: text/html; charset=UTF-8");
 if(isset($_GET['add'])){
@@ -384,6 +383,7 @@ if(isset($_POST['addPobocka'])){
 }
 
 if(isset($_GET['zamestnanci'])){
+	checkNsetLogin();
 	makeEmployeeListPage();
 	mainPageButtons();
 	startEmployeeListTable();

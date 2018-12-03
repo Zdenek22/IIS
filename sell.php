@@ -7,7 +7,7 @@ require_once "supFunct.php";
 require_once "sellpage.php";
 require_once "mainpage.php";
 require_once "accountinfo.php";
-
+checkNsetLogin();
 $server = new Database_access();
 $_POST['lek'] = $server->getMedsName($_POST['lek']); //ZMENA
 $idLeku = $server->getMedsID($_POST['lek']);

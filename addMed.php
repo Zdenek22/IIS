@@ -8,6 +8,8 @@ require_once "DBOperations.php";
 require_once "addmedpage.php";
 require_once "accountinfo.php";
 
+checkNsetLogin();
+
 makeAddMedPage();
 mainPageButtons();
 

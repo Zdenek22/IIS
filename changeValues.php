@@ -9,7 +9,7 @@ require_once "mainpage.php";
 require_once "accountinfo.php";
 require_once "evidencepage.php";
 require_once "changevaluespage.php";
-
+checkNsetLogin();
 makeChangePage();
 mainPageButtons();
 

@@ -8,6 +8,8 @@ require_once "DBOperations.php";
 require_once "addpobockapage.php";
 require_once "accountinfo.php";
 
+checkNsetLogin();
+
 makeAddPobockaPage();
 mainPageButtons();
 addPobockaForm();
