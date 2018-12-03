@@ -13,6 +13,11 @@ require_once "changevaluespage.php";
 makeChangePage();
 mainPageButtons();
 
+if(isset($_POST['error'])){
+	changeHeslo(1);
+}
+
+
 if(isset($_GET['changeTelefon'])){
 	changeTelefon();
 }
@@ -20,7 +25,7 @@ elseif (isset($_GET['changeEmail'])) {
 	changeEmail();
 }
 elseif (isset($_GET['changeHeslo'])) {
-	changeHeslo();
+	changeHeslo(0);
 }
 
 userAccountInfo();

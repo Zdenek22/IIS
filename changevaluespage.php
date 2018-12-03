@@ -73,20 +73,38 @@ function changeEmail(){
 	<?		
 }
 
-function changeHeslo(){
+function changeHeslo($error){
 	?>
 	<div class="secondCol">
 	<table style="width: 100%;border: 1px solid #ccc; border-collapse: collapse;">
+		<form action="operations.php" method="post">
 			<tr>
 				<td style="width: 20%;">Nové heslo</td>
-				<form action="operations.php" method="post">
 					<td style="text-align: left;">
 						<input type="password" name="heslo">
-						<input type="submit" name="changeHeslo" value="Změnit" style="color: white;background-color: #4CAF50;margin-right: 20%;">
-					</td>
-				</form>		
+					</td>		
 			</tr>
+			<tr>
+				<td style="width: 20%;">Heslo znovu</td>
+					<td style="text-align: left;">
+						<input type="password" name="heslo2">
+					</td>	
+			</tr>
+			<tr>	
+				<td style="width: 20%;"></td>
+				<td style="text-align: center;">
+				<input type="submit" name="changeHeslo" value="Změnit" style="color: white;background-color: #4CAF50;margin-right: 20%;">
+				</td>
+			</tr>
+		</form>		
 	</table>
+	<?php
+		if($error == 1){
+			?>
+			<div>Zadaná hesla se neshodují!</div>
+			<?php
+		}
+	?>
 	</div>		
 	<?		
 }
