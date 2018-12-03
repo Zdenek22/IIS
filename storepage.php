@@ -32,7 +32,7 @@ function makeStorePage(){
 	$server = new Database_access();
 	$user = $server->getInformation($_SESSION['user']);
 	?>
-		<h1>Lékárna - pobočka <? echo $user['pobocka']; ?></h1>
+		<h1>Lékárna - pobočka <? echo $user['pobocka']; ?> - Sklad</h1>
 		<div style="margin-bottom: 2cm"></div>
 	<?php
 }
