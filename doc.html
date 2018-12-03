@@ -39,7 +39,7 @@
 
 <h2>Implementace</h2>
 <p>Krátký popis systému: <br>
-Systém mohou využívat správci a zaměstnanci. Každá pobočka má své vlasní správce a zaměstnance. Zaměstnanec může tvořit/odebírat rezervace léků na předpis, vydávat léky na předpis i bez předpisu, prohlížet seznam všech rezervací na všech pobočkách, prohlížet množství léků na skladě pobočky na které pracuje. Správce může vše co zaměstnanec. Jeho rozšíření spočívá v přidání zaměstnance, nového léku a pobočky. Také může prohlížet všechny prodeje léků, které byly na předpis. Správce má k dispozici seznam všech zaměstnanců. Každý uživatel může spravovat svůj účet.
+Systém mohou využívat správci a zaměstnanci. Každá pobočka má své vlasní správce a zaměstnance. Zaměstnanec může tvořit/odebírat rezervace léků na předpis, vydávat léky na předpis i bez předpisu, prohlížet seznam všech rezervací na všech pobočkách, prohlížet množství léků na skladě pobočky na které pracuje. Správce může vše co zaměstnanec. Jeho rozšíření spočívá v přidání zaměstnance, nového léku a pobočky. Také může prohlížet všechny prodeje léků, které byly na předpis. Správce má k dispozici seznam všech zaměstnanců. Každý uživatel může spravovat svůj účet. Informace o člověku, který koupil lék na předpis se evidují v Evidenci transakcí.
 </p>
 <table>
 	<tr>
@@ -103,6 +103,11 @@ Systém mohou využívat správci a zaměstnanci. Každá pobočka má své vlas
 		<td>logout.php</td>
 	</tr>	
 </table>
+<p>
+	Přidali jsme případ použití Prohlížet seznam rezervací, protože v use-case diagramu z předmětu IDS nám chyběla možnonst vydat rezervované léky.
+	Možnost prohlížet evidenci transakcí byla také přidána, protože v IDS nebyla, ačkoli jsme měli v diagramu případ použití Evidovat. Tato možnost byla přiřazena správci.
+
+</p>
 
 <h2>Instalace</h2>
 <ul>
@@ -112,7 +117,11 @@ Systém mohou využívat správci a zaměstnanci. Každá pobočka má své vlas
 </ul>
 
 <h2>Známé problémy</h2>
-<p>Zde popi¹te, které body zadání (IDS a IIS) nejsou implementovány a z jakého dùvodu. Napø. &#8222;Z èasových dùvodù nebyla implementována správa u¾ivatelù.&#8221; Pomù¾ete tím zrychlit opravování, kdy¾ neimplementované funkce nebudeme muset dlouze hledat.</p>
+<p>
+Nelze mazat účty.
+
+
+Zde popi¹te, které body zadání (IDS a IIS) nejsou implementovány a z jakého dùvodu. Napø. &#8222;Z èasových dùvodù nebyla implementována správa u¾ivatelù.&#8221; Pomù¾ete tím zrychlit opravování, kdy¾ neimplementované funkce nebudeme muset dlouze hledat.</p>
 
 
 
