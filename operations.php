@@ -327,7 +327,7 @@ if(isset($_POST['addEmp'])){
 			$email = $_POST['email'];		
 
 		$server->addWorker($_POST['login'], $_POST['heslo'], $_POST['jmeno'], $_POST['prijmeni'], $telefon, $email, $idPobocky, $_POST['postaveni']);
-		redirect('addEmployee.php');
+		redirect('main.php');
 }
 
 if(isset($_POST['addMed'])){
@@ -365,7 +365,22 @@ if(isset($_POST['addMed'])){
 			$server->addNewMed($idLeku, $value['id'],$nula);
 		}
 		$server->addMeds($idLeku, $_SESSION['pobocka'], $_POST['amount']);
-		redirect('addMed.php');
+		redirect('main.php');
+}
+
+if(isset($_POST['addPobocka'])){
+		
+		$server->addPobocka($_POST['jmeno'],$_POST['mesto'], $_POST['ulice'], $_POST['cis//lo'], $_POST['psc'],  $_POST['penize']);
+
+		$idPobocky= $server->getPobockaID($_POST['jmeno']);
+		//echo "$idPobockyleky
+		$leky = $server->getAllLekID();
+		$nula = 0;
+		foreach ($leky as $key => $value) {
+			echo "$value[id], $idPobocky, $nula<br>";
+			$server->addNewMed($value['id'], $idPobocky, $nula);
+		}
+		redirect('main.php');
 }
 
 ?>

@@ -135,20 +135,8 @@ class Database_access
 
     function addNewMed($lek, $kde,$nula){
         $stmt = $this->pdo->prepare('INSERT INTO skladem (pobocka, lek, pocet) VALUES(?,?,?)');
-        if ($stmt->execute(array($kde, $lek, $nula)))
-        {
-            return TRUE;
-        }
-        else
-        {
-            $this->lastError = $stmt->errorInfo();
-            $err = $this->lastError;
-            foreach ($err as $key => $value) {
-                echo "$value";
-            }
-            
-            return FALSE;
-        }
+        $stmt->execute(array($kde, $lek, $nula));
+      
     }
 
 
@@ -257,6 +245,12 @@ class Database_access
         return $stmt->fetchAll();
     }
 
+     function getAllLekID(){
+        $stmt = $this->pdo->prepare('SELECT id FROM lek LIMIT 100');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
+    }
+
     function addTransaction($kdo, $co, $komu, $pojistovna, $kolik){
         //echo "$kdo, $co, $komu, $pojistovna, $kolik";
         $stmt = $this->pdo->prepare("INSERT INTO prodal (kdy, kdo, co, komu, pojistovna, kolik) VALUES(now(),?,?,?,?,?)");
@@ -329,6 +323,12 @@ class Database_access
         $res = $stmt->fetch();
         return $res['Penize'];
     }
+
+    function addPobocka($jmeno,$mesto, $ulice, $cislo, $PSC,  $Penize){
+        $stmt = $this->pdo->prepare('INSERT INTO pobocka (jmeno, mesto, ulice, cislo, PSC, Penize) VALUES(?,?,?,?,?,?)');
+        $stmt->execute(array($jmeno,$mesto, $ulice, $cislo, $PSC,  $Penize));
+    }
+
 
     function getTransactions(){
         $stmt = $this->pdo->prepare('SELECT prodal.kdy cas, prodal.kdo login, prodal.komu RC, zakaznik.jmeno jmeno, zakaznik.prijmeni prijmeni, pojistovna.jmeno pojistovna, lek.jmeno lek, prodal.kolik kolik FROM prodal, zakaznik, pojistovna, lek WHERE prodal.komu = zakaznik.RC AND prodal.pojistovna=pojistovna.id AND prodal.co=lek.id');
