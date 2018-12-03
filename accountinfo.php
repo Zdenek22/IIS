@@ -91,7 +91,7 @@ function fillAccountTable(){
 		?>
 		<td>
 			<form>
-				<input class="changeButton" type="button" name="change" value="Změnit">
+				<input class="changeButton" type="submit" name="changeEmail" value="Změnit">
 			</form>
 		</td>
 	</tr>
@@ -111,13 +111,22 @@ function fillAccountTable(){
 		?>
 		<td>
 			<form>
-				<input class="changeButton" type="button" name="change" value="Změnit">
+				<input class="changeButton" type="submit" name="changeTelefon" value="Změnit">
 			</form>
 		</td>
 	</tr>
 	<tr>
 		<td class="des">Status:</td>
 		<td class="val"><? echo $status; ?></td>
+	</tr>
+	<tr>
+		<td class="des">Změnit heslo:</td>
+		<td class="val"></td>
+		<td>
+			<form>
+				<input class="changeButton" type="submit" name="changeHeslo" value="Změnit">
+			</form>
+		</td>
 	</tr>
 
 <?php
