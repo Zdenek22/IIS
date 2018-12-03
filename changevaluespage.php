@@ -81,13 +81,13 @@ function changeHeslo($error){
 			<tr>
 				<td style="width: 20%;">Nové heslo</td>
 					<td style="text-align: left;">
-						<input type="password" name="heslo">
+						<input type="password" name="heslo" required="required">
 					</td>		
 			</tr>
 			<tr>
 				<td style="width: 20%;">Heslo znovu</td>
 					<td style="text-align: left;">
-						<input type="password" name="heslo2">
+						<input type="password" name="heslo2" required="required">
 					</td>	
 			</tr>
 			<tr>	
