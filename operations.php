@@ -370,14 +370,13 @@ if(isset($_POST['addMed'])){
 
 if(isset($_POST['addPobocka'])){
 		
-		$server->addPobocka($_POST['jmeno'],$_POST['mesto'], $_POST['ulice'], $_POST['cis//lo'], $_POST['psc'],  $_POST['penize']);
+		$server->addPobocka($_POST['jmeno'],$_POST['mesto'], $_POST['ulice'], $_POST['cislo'], $_POST['psc'],  $_POST['penize']);
 
 		$idPobocky= $server->getPobockaID($_POST['jmeno']);
 		//echo "$idPobockyleky
 		$leky = $server->getAllLekID();
 		$nula = 0;
 		foreach ($leky as $key => $value) {
-			echo "$value[id], $idPobocky, $nula<br>";
 			$server->addNewMed($value['id'], $idPobocky, $nula);
 		}
 		redirect('main.php');
