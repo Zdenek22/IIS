@@ -206,11 +206,13 @@ body{
 
 .accountTable .des{
 	text-align: left;
+	margin: 10px; 
 }
 
 .accountTable .val{
 	text-align: right;
 	padding-left: 15px;
+	margin: 10px;
 }
 
 .changeButton{

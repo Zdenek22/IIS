@@ -90,7 +90,7 @@ function fillAccountTable(){
 		}
 		?>
 		<td>
-			<form>
+			<form action="changeValues.php" method="get">
 				<input class="changeButton" type="submit" name="changeEmail" value="Změnit">
 			</form>
 		</td>
@@ -110,7 +110,7 @@ function fillAccountTable(){
 		}
 		?>
 		<td>
-			<form>
+			<form action="changeValues.php" method="get">
 				<input class="changeButton" type="submit" name="changeTelefon" value="Změnit">
 			</form>
 		</td>
@@ -123,7 +123,7 @@ function fillAccountTable(){
 		<td class="des">Změnit heslo:</td>
 		<td class="val"></td>
 		<td>
-			<form>
+			<form action="changeValues.php" method="get">
 				<input class="changeButton" type="submit" name="changeHeslo" value="Změnit">
 			</form>
 		</td>
