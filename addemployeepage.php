@@ -66,7 +66,7 @@ function addEmployeeForm(){
 					<td style="text-align: left;"><input type="email" name="email" placeholder="xlogin@gmail.com"></td>
 				</tr>
 				<tr>
-					<td style="width: 20%;"> Postavení zaměstnance:</td>
+					<td style="width: 20%;">*Postavení zaměstnance:</td>
 					<td style="text-align: left;"><select list="postaveni" name="postaveni" required="required" style="width: 20%;">
 						<datalist id="postaveni">
 							<option value="0">Zaměstnanec</option>
