@@ -332,10 +332,40 @@ if(isset($_POST['addEmp'])){
 
 if(isset($_POST['addMed'])){
 		//pridat zamestnance
+		$try = $server->getMedsID($_POST['jmeno']);
+		$anyError=0;
+		if(!empty($try)){
+			$anyError = 1;
+			$_POST['jmeno']=0;
+		}
 
-		echo "$_POST[jmeno],  $_POST[cena], $_POST[amount],  $_POST[popis], $_POST[predpis]";
+		if($anyError === 1){
+			?>
+			<form id="myForm" action="addMed.php" method="post">  
+			<?php
+			    foreach ($_POST as $a => $b) {
+			        echo '<input type="hidden" name="'.htmlentities($a).'" value="'.htmlentities($b).'">';
+			    }
+			?>
+			</form>
+			<script type="text/javascript">
+			    document.getElementById('myForm').submit();
+			</script>
+			<?
+			die();
+		}
 
-		addMed($jmeno, $cena, $predpis, $popis);
+		$server->addMed($_POST['jmeno'], $_POST['cena'], $_POST['predpis'], $_POST['popis']);
+
+		$idLeku= $server->getMedsID($_POST['jmeno']);
+
+		$pobocky = $server->getAllPobockaID();
+		$nula = 0;
+		foreach ($pobocky as $key => $value) {
+			$server->addNewMed($idLeku, $value['id'],$nula);
+		}
+		$server->addMeds($idLeku, $_SESSION['pobocka'], $_POST['amount']);
+		redirect('addMed.php');
 }
 
 ?>

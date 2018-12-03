@@ -133,6 +133,25 @@ class Database_access
         $stmt->execute(array($result, $kde, $lek));
     }
 
+    function addNewMed($lek, $kde,$nula){
+        $stmt = $this->pdo->prepare('INSERT INTO skladem (pobocka, lek, pocet) VALUES(?,?,?)');
+        if ($stmt->execute(array($kde, $lek, $nula)))
+        {
+            return TRUE;
+        }
+        else
+        {
+            $this->lastError = $stmt->errorInfo();
+            $err = $this->lastError;
+            foreach ($err as $key => $value) {
+                echo "$value";
+            }
+            
+            return FALSE;
+        }
+    }
+
+
     function eraseReservation($idRezervace, $kdo){
         $stmt =$this->pdo->prepare('UPDATE rezervace SET ukoncil=?, ukoncenaVydanim = 0 WHERE id =?');
         $stmt->execute(array($kdo, $idRezervace));
@@ -230,6 +249,12 @@ class Database_access
         $stmt->execute(array($jmenoLeku));
         $result = $stmt->fetch();
         return $result['id'];
+    }
+
+    function getAllPobockaID(){
+        $stmt = $this->pdo->prepare('SELECT id FROM pobocka LIMIT 100');
+        $stmt->execute(array());
+        return $stmt->fetchAll();
     }
 
     function addTransaction($kdo, $co, $komu, $pojistovna, $kolik){
